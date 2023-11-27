@@ -2,31 +2,31 @@
 --
 -- Author: Marco Stundner
 --
--- Filename: tb_pattern_gen1.vhd
+-- Filename: tb_pattern_gen2.vhd
 --
--- Date: 20.11.2023
+-- Date: 27.11.2023
 --
--- Design Unit: Pattern Generator 1 
+-- Design Unit: Pattern Generator 2 
 --
--- Description: Pattern Generator 1 generates a pattern of equally distributed horizontal 
--- color stripes that are repeated four times per frame
+-- Description: Pattern Generator 2 generates a tile pattern with 10 x 10 tiles per frame
 --
 -------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity tb_pattern_gen1 is
-end tb_pattern_gen1;
+entity tb_pattern_gen2 is
+end tb_pattern_gen2;
 
-architecture sim of tb_pattern_gen1 is
+architecture sim of tb_pattern_gen2 is
 
-    component pattern_gen1
+    component pattern_gen2
         port(
             clk_i      : in std_logic;
             pixel_en_i : in std_logic;
             reset_i    : in std_logic;
             pixelX_i   : in unsigned(9 downto 0);
+            pixelY_i   : in unsigned(9 downto 0);
             red_o      : out std_logic_vector(3 downto 0);
             green_o    : out std_logic_vector(3 downto 0);
             blue_o     : out std_logic_vector(3 downto 0)
@@ -34,17 +34,18 @@ architecture sim of tb_pattern_gen1 is
     end component;
 
     signal clk_i, reset_i, pixel_en_i  : std_logic := '0';
-    signal pixelX_i                    : unsigned(9 downto 0);
+    signal pixelX_i, pixelY_i          : unsigned(9 downto 0);
     signal red_o, green_o, blue_o      : std_logic_vector(3 downto 0);
 
 begin
 
-    tb_pattern_gen1 :  pattern_gen1
+    tb_pattern_gen2 :  pattern_gen2
     port map(
             clk_i      =>  clk_i,
             reset_i    => reset_i,
             pixel_en_i => pixel_en_i,
             pixelX_i   => pixelX_i,
+            pixelY_i   => pixelY_i,
             red_o      => red_o,
             green_o    => green_o,
             blue_o     => blue_o
@@ -77,29 +78,19 @@ begin
     pixel_p : process
     begin
         wait for 15 us;
-        pixelX_i <= to_unsigned(79, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(559, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(39, pixelX_i'length);
-        wait for 40 us;
+        pixelY_i <= to_unsigned(150, pixelY_i'length);
+        pixelX_i <= to_unsigned(60, pixelX_i'length);
+        wait for 20 us;
 
-        pixelX_i <= to_unsigned(119, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(159, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(239, pixelX_i'length);
-        wait for 40 us;
+        pixelY_i <= to_unsigned(340, pixelY_i'length);
+        pixelX_i <= to_unsigned(200, pixelX_i'length);
+        wait for 20 us;
 
-        pixelX_i <= to_unsigned(279, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(319, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(400, pixelX_i'length);
+        pixelY_i <= to_unsigned(100, pixelY_i'length);
+        pixelX_i <= to_unsigned(580, pixelX_i'length);
         wait;
-       
+
     end process;
 
+
 end sim;
-
-

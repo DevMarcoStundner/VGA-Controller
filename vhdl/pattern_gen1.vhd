@@ -11,16 +11,12 @@
 -- Description: Pattern Generator 1 generates a pattern of equally distributed horizontal 
 -- color stripes that are repeated four times per frame
 --
-
--- für  s_rgb const machen red, blue usw
--- s_rgb auf 12 bit machen und unten dann zuweisen
 -------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity pattern_gen1 is
-
     port(
         clk_i      : in std_logic;
         pixel_en_i : in std_logic;
@@ -34,8 +30,8 @@ end pattern_gen1;
 
 architecture rtl of pattern_gen1 is
     constant red, green, blue : std_logic_vector(3 downto 0):="1111";
-    constant clear : std_logic_vector(3 downto 0):="0000";
-    signal s_rgb              : std_logic_vector(11 downto 0);
+    constant clear            : std_logic_vector(3 downto 0):="0000";
+    signal   s_rgb            : std_logic_vector(11 downto 0);
 begin
 
     p_stripe : process(clk_i, reset_i)
@@ -118,7 +114,7 @@ begin
                         s_rgb(11 downto 8) <= clear;
                         s_rgb(7 downto 4) <= clear;
                         s_rgb(3 downto 0) <= blue;
-                        
+
                     when 600 to 639 =>
                         s_rgb(11 downto 8) <= red;
                         s_rgb(7 downto 4) <= green;
