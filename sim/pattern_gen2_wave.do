@@ -4,9 +4,7 @@ add wave -noupdate -format Logic /tb_pattern_gen2/clk_i
 add wave -noupdate -format Logic /tb_pattern_gen2/reset_i
 add wave -noupdate -format Logic /tb_pattern_gen2/pixelX_i
 add wave -noupdate -format Logic /tb_pattern_gen2/pixelY_i
-add wave -noupdate -format Logic /tb_pattern_gen2/red_o
-add wave -noupdate -format Logic /tb_pattern_gen2/green_o
-add wave -noupdate -format Logic /tb_pattern_gen2/blue_o
+add wave -noupdate -format Logic /tb_pattern_gen2/rgb_o
 
 
 TreeUpdate [SetDefaultTree]

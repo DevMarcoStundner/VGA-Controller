@@ -34,10 +34,11 @@ architecture sim of tb_source_mul is
             );
     end component;
 
-    signal clk_i, reset_i                                        : std_logic := '0';
-    signal swsync_i                                              : std_logic_vector(15 downto 0);
-    signal pbsync_i                                              : std_logic_vector(3 downto 0);
-    signal rgb_pat1_i, rgb_pat2_i, rgb_mem1_i, rgb_mem2_i, rgb_o : std_logic_vecotr(11 downto 0);
+    signal clk_i, reset_i                                 : std_logic := '0';
+    signal swsync_i                                       : std_logic_vector(15 downto 0);
+    signal pbsync_i                                       : std_logic_vector(3 downto 0);
+    signal rgb_pat1_i, rgb_pat2_i, rgb_mem1_i, rgb_mem2_i : std_logic_vector(11 downto 0);
+    signal rgb_o                                          : std_logic_vector(11 downto 0);
 
 begin
 

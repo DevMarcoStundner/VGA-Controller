@@ -3,9 +3,8 @@ quietly WaveActivateNextPane {} 0
 add wave -noupdate -format Logic /tb_pattern_gen1/clk_i
 add wave -noupdate -format Logic /tb_pattern_gen1/reset_i
 add wave -noupdate -format Logic /tb_pattern_gen1/pixelX_i
-add wave -noupdate -format Logic /tb_pattern_gen1/red_o
-add wave -noupdate -format Logic /tb_pattern_gen1/green_o
-add wave -noupdate -format Logic /tb_pattern_gen1/blue_o
+add wave -noupdate -format Logic /tb_pattern_gen1/rgb_o
+
 
 
 TreeUpdate [SetDefaultTree]

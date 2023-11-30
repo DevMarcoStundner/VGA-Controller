@@ -27,15 +27,13 @@ architecture sim of tb_pattern_gen1 is
             pixel_en_i : in std_logic;
             reset_i    : in std_logic;
             pixelX_i   : in unsigned(9 downto 0);
-            red_o      : out std_logic_vector(3 downto 0);
-            green_o    : out std_logic_vector(3 downto 0);
-            blue_o     : out std_logic_vector(3 downto 0)
+            rgb_o      : out std_logic_vector(11 downto 0)
             );
     end component;
 
     signal clk_i, reset_i, pixel_en_i  : std_logic := '0';
     signal pixelX_i                    : unsigned(9 downto 0);
-    signal red_o, green_o, blue_o      : std_logic_vector(3 downto 0);
+    signal rgb_o                       : std_logic_vector(11 downto 0);
 
 begin
 
@@ -45,9 +43,7 @@ begin
             reset_i    => reset_i,
             pixel_en_i => pixel_en_i,
             pixelX_i   => pixelX_i,
-            red_o      => red_o,
-            green_o    => green_o,
-            blue_o     => blue_o
+            rgb_o      => rgb_o
             );
 
     CLK_p : process                     -- 100 Mhz
