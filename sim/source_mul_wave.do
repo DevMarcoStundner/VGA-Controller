@@ -1,14 +1,14 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate -format Logic /tb_pattern_gen2/clk_i
-add wave -noupdate -format Logic /tb_pattern_gen2/reset_i
-add wave -noupdate -format Logic /tb_pattern_gen2/swsync_i
-add wave -noupdate -format Logic /tb_pattern_gen2/pbsync_i
-add wave -noupdate -format Logic /tb_pattern_gen2/rgb_pat1_i
-add wave -noupdate -format Logic /tb_pattern_gen2/rgb_pat2_i
-add wave -noupdate -format Logic /tb_pattern_gen2/rgb_mem1_i
-add wave -noupdate -format Logic /tb_pattern_gen2/rgb_mem2_i
-add wave -noupdate -format Logic /tb_pattern_gen2/rgb_o
+add wave -noupdate -format Logic /tb_source_mul/clk_i
+add wave -noupdate -format Logic /tb_source_mul/reset_i
+add wave -noupdate -format Logic /tb_source_mul/swsync_i
+add wave -noupdate -format Logic /tb_source_mul/pbsync_i
+add wave -noupdate -format Logic /tb_source_mul/rgb_pat1_i
+add wave -noupdate -format Logic /tb_source_mul/rgb_pat2_i
+add wave -noupdate -format Logic /tb_source_mul/rgb_mem1_i
+add wave -noupdate -format Logic /tb_source_mul/rgb_mem2_i
+add wave -noupdate -format Logic /tb_source_mul/rgb_o
 
 
 

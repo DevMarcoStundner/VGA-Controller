@@ -51,7 +51,7 @@ begin
             rgb_pat1_i => rgb_pat1_i,
             rgb_pat2_i => rgb_pat2_i,
             rgb_mem1_i => rgb_mem1_i,
-            rgb_mem2_i => rgb_mem2_i
+            rgb_mem2_i => rgb_mem2_i,
             rgb_o      => rgb_o
             );
 
@@ -69,4 +69,27 @@ begin
             wait for 15 us;
             reset_i <= '0';
             wait;
+
     end process;
+
+    SW_p : process
+        begin
+            rgb_pat1_i <= "111100000000";
+            rgb_pat2_i <= "000011110000";
+            rgb_mem1_i <= "000000001111";
+            wait for 15 us;
+
+            swsync_i(0) <= '1';
+            wait for 15 us;
+
+            swsync_i(0) <= '0';
+            swsync_i(1) <= '0';
+            wait for 15 us;
+
+            swsync_i(0) <= '0';
+            swsync_i(1) <= '1';
+            wait;
+        
+    end process;
+
+end sim;

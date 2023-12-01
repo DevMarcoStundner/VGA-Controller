@@ -32,7 +32,7 @@ end source_mul;
 
 architecture rtl of source_mul is
 
-type fsm_states is (MEM1, PAT1, PAT2, MOVE_OBJ)
+type fsm_states is (MEM1, PAT1, PAT2, MOVE_OBJ);
 signal s_states : fsm_states;
 signal s_rgb    : std_logic_vector(11 downto 0);
 
@@ -44,17 +44,17 @@ begin
         if reset_i = '1' then
 
         elsif clk_i'event and clk_i = '1' then
-            if swsync_i(0) = 1 then                             -- Mem 1
-                s_states <= MEM1
+            if swsync_i(0) = '1' then                             -- Mem 1
+                s_states <= MEM1;
 
-            elsif swsync_i(0) = 0 and swsync_i(1) = 1 then      -- Pat 2
-                s_states <= PAT2
+            elsif swsync_i(0) = '0' and swsync_i(1) = '1' then      -- Pat 2
+                s_states <= PAT2;
 
-            elsif swsync_i(0) = 0 and swsync_i(0) = 0 then      -- Pat 1
-                s_states <= PAT1
+            elsif swsync_i(0) = '0' and swsync_i(0) = '0' then      -- Pat 1
+                s_states <= PAT1;
 
-            elsif swsync_i(2) = 1 then                          -- Move_Obj
-                s_states <= MOVE_OBJ
+            elsif swsync_i(2) = '1' then                          -- Move_Obj
+                s_states <= MOVE_OBJ;
 
             end if;
 
