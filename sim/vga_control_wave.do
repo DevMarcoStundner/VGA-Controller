@@ -3,12 +3,8 @@ quietly WaveActivateNextPane {} 0
 add wave -noupdate -format Logic /tb_vga_control/clk_i
 add wave -noupdate -format Logic /tb_vga_control/reset_i
 add wave -noupdate -format Logic /tb_vga_control/pixel_en_i
-add wave -noupdate -format Logic /tb_vga_control/r_i
-add wave -noupdate -format Logic /tb_vga_control/g_i
-add wave -noupdate -format Logic /tb_vga_control/b_i
-add wave -noupdate -format Logic /tb_vga_control/r_o
-add wave -noupdate -format Logic /tb_vga_control/g_o
-add wave -noupdate -format Logic /tb_vga_control/b_o
+add wave -noupdate -format Logic /tb_vga_control/rgb_i
+add wave -noupdate -format Logic /tb_vga_control/rgb_o
 add wave -noupdate -format Logic /tb_vga_control/v_sync_o
 add wave -noupdate -format Logic /tb_vga_control/h_sync_o
 

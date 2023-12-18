@@ -31,8 +31,8 @@ end vga;
 
 architecture rtl of vga is
 
-    signal h_counter            : integer := 0;
-    signal v_counter            : integer := 0;
+    signal s_h_counter            : integer := 0;
+    signal s_v_counter            : integer := 0;
 
     constant h_visible_area     : integer := 640;
     constant v_visible_area     : integer := 480;
@@ -47,39 +47,49 @@ begin
     p_vga : process(clk_i, reset_i)
     begin
         if reset_i = '1' then
-            s_h_pulse <= '0';
-            s_v_pulse <= '0';
-            s_v_sync  <= '0';
-            s_h_sync  <= '0';
+            
 
         elsif clk_i'event and  clk_i = '1' then
             if pixel_en_i = '1' then
-                if h_counter < h_visible_area + h_pulse + h_back_porch + h_front_porch then
-                    h_counter <= h_counter + 1;
+                if s_h_counter < h_visible_area + h_pulse + h_back_porch + h_front_porch then
+                    s_h_counter <= s_h_counter + 1;
 
                 else
-                    h_counter <= 0;
+                    s_h_counter <= 0;
 
-                    if v_counter < v_visible_area + v_pulse + v_back_porch + v_front_porch then
-                        v_counter <= v_counter + 1;
+                    if s_v_counter < v_visible_area + v_pulse + v_back_porch + v_front_porch then
+                        s_v_counter <= s_v_counter + 1;
 
                     else
-                        v_counter <= 0;
+                        s_v_counter <= 0;
                         
                     end if;
                 end if;
 
-                if h_counter < h_visible_area and v_counter < v_visible_area then
+                if s_h_counter < h_visible_area and s_v_counter < v_visible_area then
 
                     -- auf bild zugreifen pattern
                 else
                     rgb_o <= (others => '0');
                     
                 end if ;
-                h_sync_o <= '1' when (h_counter < h_pulse or h_counter >= h_visible_area + h_pulse + h_back_porch) else '0';
-                v_sync_o <= '1' when (v_counter < v_pulse or v_counter >= v_visible_area + v_pulse + v_back_porch) else '0';
-                
+
+                if s_h_counter < h_pulse or s_h_counter >= h_visible_area + h_pulse + h_back_porch then
+                    h_sync_o <= '1';
+
+                else
+                    h_sync_o <= '0';
+
+                end if;
+
+                if s_v_counter < v_pulse or s_v_counter >= v_visible_area + v_pulse + v_back_porch then
+                    v_sync_o <= '1';
+
+                else
+                    v_sync_o <= '0';
+
+                end if;                
             end if;
         end if;
-
+    end process;
 end rtl;
