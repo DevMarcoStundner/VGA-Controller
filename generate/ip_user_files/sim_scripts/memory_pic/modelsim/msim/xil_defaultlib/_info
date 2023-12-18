@@ -1,0 +1,220 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/marco/Desktop/FH/CHIP2/VGA_Controller/generate/ip_user_files/sim_scripts/memory_pic/modelsim
+vglbl
+Z1 !s110 1702895977
+!i10b 1
+!s100 g=dL3UKAkhNRkQ:7=fPzF1
+IUHN6a1mRFzWRoYc]^<AY;2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1460148552
+8glbl.v
+Fglbl.v
+L0 6
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1702895977.000000
+!s107 glbl.v|
+!s90 -reportprogress|300|-work|xil_defaultlib|glbl.v|
+!i113 1
+Z5 o-work xil_defaultlib
+Z6 tCvgOpt 0
+vmemory_pic
+R1
+!i10b 1
+!s100 :7oXd9Bcg5_;F4aLb3hW;2
+IHK94lb=Ym:mMl300Y?MO90
+R2
+R0
+w1702895172
+8../../../../memory_pic/sim/memory_pic.v
+F../../../../memory_pic/sim/memory_pic.v
+Z7 L0 56
+R3
+r1
+!s85 0
+31
+R4
+!s107 ../../../../memory_pic/sim/memory_pic.v|
+!s90 -reportprogress|300|-work|xil_defaultlib|-64|-incr|../../../../memory_pic/sim/memory_pic.v|
+!i113 1
+R5
+R6
+vxpm_memory_base
+Z8 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z9 !s110 1702895976
+!i10b 1
+!s100 GOK4afz1<VFG;WEj68jZY3
+IMzTOON9JA6nFMm1i[dCPV0
+R2
+!s105 xpm_memory_base_sv_unit
+S1
+R0
+Z10 w1460161105
+8C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv
+FC:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv
+L0 57
+R3
+r1
+!s85 0
+31
+Z11 !s108 1702895976.000000
+Z12 !s107 C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv|
+Z13 !s90 -reportprogress|300|-work|xil_defaultlib|-64|-incr|-sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv|C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv|
+!i113 1
+Z14 o-work xil_defaultlib -sv
+R6
+vxpm_memory_dpdistram
+R8
+R9
+!i10b 1
+!s100 2LHiB`CdIUkO[Sc9:E=iZ1
+I9BZaoi3nQ]`G=@@ZAnC`@3
+R2
+!s105 xpm_memory_dpdistram_sv_unit
+S1
+R0
+R10
+8C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv
+FC:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv
+R7
+R3
+r1
+!s85 0
+31
+R11
+R12
+R13
+!i113 1
+R14
+R6
+vxpm_memory_dprom
+R8
+R9
+!i10b 1
+!s100 F22IH2KkLL<fQWHU]>`9X1
+IjYz<<R4P4G7T5NlIkJk^`1
+R2
+!s105 xpm_memory_dprom_sv_unit
+S1
+R0
+R10
+8C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv
+FC:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv
+R7
+R3
+r1
+!s85 0
+31
+R11
+R12
+R13
+!i113 1
+R14
+R6
+vxpm_memory_sdpram
+R8
+R9
+!i10b 1
+!s100 f8gdck?OmlK:8OBRZSdbR0
+IY;MPP=K1E2?RDXYj9Na<<0
+R2
+!s105 xpm_memory_sdpram_sv_unit
+S1
+R0
+R10
+8C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv
+FC:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv
+R7
+R3
+r1
+!s85 0
+31
+R11
+R12
+R13
+!i113 1
+R14
+R6
+vxpm_memory_spram
+R8
+R9
+!i10b 1
+!s100 dkBXkn^U]nf]Wfl;j@iLR0
+IJAPDY_9m3YZa_OeZioBmC2
+R2
+!s105 xpm_memory_spram_sv_unit
+S1
+R0
+R10
+8C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv
+FC:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv
+R7
+R3
+r1
+!s85 0
+31
+R11
+R12
+R13
+!i113 1
+R14
+R6
+vxpm_memory_sprom
+R8
+R9
+!i10b 1
+!s100 05=F:GOZ3lGnSTPj?<=kl1
+I6TaeF5c]JoOcVL8ASmbJY2
+R2
+!s105 xpm_memory_sprom_sv_unit
+S1
+R0
+R10
+8C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv
+FC:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv
+R7
+R3
+r1
+!s85 0
+31
+R11
+R12
+R13
+!i113 1
+R14
+R6
+vxpm_memory_tdpram
+R8
+R9
+!i10b 1
+!s100 B]=nJbU3aV0?4PLe7TcSP1
+I=Z>oFBD:mJK46WbYFJ^3Y2
+R2
+!s105 xpm_memory_tdpram_sv_unit
+S1
+R0
+R10
+8C:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv
+FC:/Xilinx/Vivado/2016.1/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv
+R7
+R3
+r1
+!s85 0
+31
+R11
+R12
+R13
+!i113 1
+R14
+R6
