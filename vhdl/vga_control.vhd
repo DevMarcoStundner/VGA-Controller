@@ -22,15 +22,11 @@ entity vga is
         clk_i      : in std_logic;
         reset_i    : in std_logic;
         pixel_en_i : in std_logic;
-        r_i        : in std_logic_vector(3 downto 0);
-        g_i        : in std_logic_vector(3 downto 0);
-        b_i        : in std_logic_vector(3 downto 0);
-        r_o        : out std_logic_vector(3 downto 0);
-        g_o        : out std_logic_vector(3 downto 0);
-        b_o        : out std_logic_vector(3 downto 0);
+        rgb_i      : out std_logic_vector(11 downto 0);
+        rgb_o      : out std_logic_vector(11 downto 0);
         v_sync_o   : out std_logic;
-        h_sync_o   : out std_logic;
-    );
+        h_sync_o   : out std_logic
+        );
 end vga;
 
 architecture rtl of vga is
@@ -77,14 +73,12 @@ begin
 
                     -- auf bild zugreifen pattern
                 else
-                    r_o <= (others => '0');
-                    g_o <= (others => '0');
-                    b_o <= (others => '0');
+                    rgb_o <= (others => '0');
                     
                 end if ;
-                
                 h_sync_o <= '1' when (h_counter < h_pulse or h_counter >= h_visible_area + h_pulse + h_back_porch) else '0';
                 v_sync_o <= '1' when (v_counter < v_pulse or v_counter >= v_visible_area + v_pulse + v_back_porch) else '0';
+                
             end if;
         end if;
 
