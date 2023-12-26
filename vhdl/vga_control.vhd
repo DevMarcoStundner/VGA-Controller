@@ -24,8 +24,10 @@ entity vga is
         pixel_en_i : in std_logic;
         rgb_i      : out std_logic_vector(11 downto 0);
         rgb_o      : out std_logic_vector(11 downto 0);
-        v_sync_o   : out std_logic;
-        h_sync_o   : out std_logic
+        v_pulse    : out std_logic:
+        h_pulse    : out std_logic;
+        v_sync_o   : out integer;
+        h_sync_o   : out integer
         );
 end vga;
 
@@ -33,8 +35,8 @@ architecture rtl of vga is
 
     signal s_h_counter : integer := 0;
     signal s_v_counter : integer := 0;
-    signal s_v_sync    : std_logic;
-    signal s_h_sync    : std_logic;
+    signal s_v_pulse   : std_logic;
+    signal s_h_pulse   : std_logic;
     signal s_rgb       : std_logic_vector(11 downto 0);
 
     constant h_visible_area     : integer := 640;
@@ -58,7 +60,7 @@ begin
             s_h_counter <= 0;
             s_v_counter <= 0;
 
-        elsif clk_i'event and  clk_i = '1' then
+        elsif clk_i'event and clk_i = '1' then
 
             if pixel_en_i = '1' then
 
@@ -86,18 +88,18 @@ begin
                 end if ;
 
                 if (s_h_counter > h_front_porch + h_visible_area) and (s_h_counter < h_front_porch + h_visible_area + h_pulse) then
-                    s_h_sync <= '1';
+                    s_h_pulse <= '1';
 
                 else
-                    s_h_sync <= '0';
+                    s_h_pulse <= '0';
 
                 end if;
 
                 if (s_v_counter > v_front_porch + v_visible_area) and (s_v_counter < v_front_porch + v_visible_area + v_pulse) then
-                    s_v_sync <= '1';
+                    s_v_pulse <= '1';
 
                 else
-                    s_v_sync <= '0';
+                    s_v_pulse <= '0';
 
                 end if;                
             end if;
@@ -106,6 +108,8 @@ begin
     end process;
 
     rgb_o    <= s_rgb;
-    h_sync_o <= s_h_sync;
-    v_sync_o <= s_v_sync;
+    h_sync_o <= s_h_counter;
+    v_sync_o <= s_v_counter;
+    h_pulse  <= s_h_pulse;
+    v_pulse  <= s_v_pulse;
 end rtl;
