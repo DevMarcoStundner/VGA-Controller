@@ -20,8 +20,8 @@ entity pattern_gen2 is
         clk_i      : in std_logic;
         pixel_en_i : in std_logic;
         reset_i    : in std_logic;
-        pixelX_i   : in unsigned(9 downto 0);
-        pixelY_i   : in unsigned(9 downto 0);
+        pixelX_i   : in integer;
+        pixelY_i   : in integer;
         rgb_o      : out std_logic_vector(11 downto 0)
         );
 end pattern_gen2;
@@ -44,7 +44,7 @@ begin
                     (pixelY_i >= 144 and pixelY_i <= 191) or
                     (pixelY_i >= 288 and pixelY_i <= 335) or
                     (pixelY_i >= 432 and pixelY_i <= 480) then
-                        case to_integer(pixelX_i) is
+                        case pixelX_i is
                             when 0 to 63 |  192 to 255 | 384 to 447 | 576 to 639 => -- red
                                 s_rgb <= red;
                             
@@ -61,7 +61,7 @@ begin
                 elsif (pixelY_i >= 48 and pixelY_i <= 95) or    -- green start
                       (pixelY_i >= 192 and pixelY_i <= 239) or
                       (pixelY_i >= 336 and pixelY_i <= 383) then
-                        case to_integer(pixelX_i) is
+                        case pixelX_i is
                             when 0 to 63 |  192 to 255 | 384 to 447 | 576 to 639 => -- green
                                 s_rgb <= green;
                             
@@ -78,7 +78,7 @@ begin
                 elsif (pixelY_i >= 96 and pixelY_i <= 143) or   -- blue start
                       (pixelY_i >= 240 and pixelY_i <= 287) or
                       (pixelY_i >= 384 and pixelY_i <= 431) then
-                        case to_integer(pixelX_i) is
+                        case pixelX_i is
                             when 0 to 63 |  192 to 255 | 384 to 447 | 576 to 639 => -- blue
                                 s_rgb <= blue;
                             
