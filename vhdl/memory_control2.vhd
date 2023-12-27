@@ -23,10 +23,10 @@ entity mem_control2 is
         reset_i    : in std_logic;
         pixel_en_i : in std_logic;
         rom_i      : in std_logic_vector(11 downto 0);
-        h_sync_i   : in std_logic;
-        v_sync_i   : in std_logic;
-        x_i        : in std_logic;
-        y_i        : in std_logic;
+        h_sync_i   : in integer;
+        v_sync_i   : in integer;
+        x_i        : in integer;
+        y_i        : in integer;
         rom_addr_o : out std_logic_vector(16 downto 0);
         rgb_o      : out std_logic_vector(11 downto 0)
     );
@@ -55,16 +55,16 @@ begin
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
 
-                if(h_sync_i >= x_i and h_sync_i < (x_i + pic_size)) then
+                if h_sync_i >= x_i and h_sync_i < (x_i + pic_size) then
 
-                    if(v_sync_i >= y_i and v_sync_i < (y_i + pic_size)) then
+                    if v_sync_i >= y_i and v_sync_i < (y_i + pic_size) then
 
-                        if(h_sync_i = x_i and v_sync_i = y_i) then
+                        if h_sync_i = x_i and v_sync_i = y_i then
                             rom_addr := 0;#
 
                         end if;
 
-                        if(rom_addr = last_addr) then
+                        if rom_addr = last_addr then
                             rom_addr := 0;
 
                         else
@@ -73,7 +73,7 @@ begin
                         end if;
 
                     end if;
-                    
+
                 end if;
 
                 s_rom_addr <= std_logic_vector(to_unsigned(rom_addr, s_rom_addr'length));

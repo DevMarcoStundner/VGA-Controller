@@ -24,7 +24,7 @@ entity mem_control1 is
         rom_i      : in std_logic_vector(11 downto 0);
         h_sync_i   : in integer;
         v_sync_i   : in integer;
-        rom_addr_o   : out std_logic_vector(16 downto 0);
+        rom_addr_o : out std_logic_vector(16 downto 0);
         rgb_o      : out std_logic_vector(11 downto 0)
         );
 end mem_control1;
@@ -51,25 +51,25 @@ begin
         
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
-                if(h_sync_i >= 0 and h_sync_i < 0 + (h_visible_area / 2)) then      -- Upper Half
+                if h_sync_i >= 0 and h_sync_i < 0 + (h_visible_area / 2) then      -- Upper Half
 
-                    if(v_sync_i >= 0 and v_sync_i < 0 (v_visible_area / 2)) then    -- UR
+                    if v_sync_i >= 0 and v_sync_i < 0 (v_visible_area / 2) then    -- UR
                         rom_addr <= v_sync_i * (h_visible_area / 2) + h_sync;
                         s_rgb <= rom_i;
                     
-                    elsif (v_sync_i >= 0 + (v_visible_area / 2) and v_sync_i < 0 + v_visible_area) then -- UL
+                    elsif v_sync_i >= 0 + (v_visible_area / 2) and v_sync_i < 0 + v_visible_area then -- UL
                         rom_addr <= (v_sync_i - (v_visible_area / 2)) * (h_visible_area / 2) + h_sync_i;
                         s_rgb <= rom_i;
 
                     end if;
 
-                elsif (h_sync_i >= 0 + (h_visible_area / 2) and h_sync_i < 0 + h_visible_area) then     -- Lower Half
+                elsif h_sync_i >= 0 + (h_visible_area / 2) and h_sync_i < 0 + h_visible_area then     -- Lower Half
 
-                    if(v_sync_i >= 0 and v_sync_i < 0 + (v_visible_area / 2)) then                      -- LL
+                    if v_sync_i >= 0 and v_sync_i < 0 + (v_visible_area / 2) then                      -- LL
                         rom_addr <= v_sync_i * (h_visible_area / 2) + (h_sync_i - (h_visible_area / 2));
                         s_rgb <= rom_i;
                     
-                    elsif (v_sync_i >= 0 + (v_visible_area / 2) and v_sync_i < 0 + v_visible_area) then     -- LR
+                    elsif v_sync_i >= 0 + (v_visible_area / 2) and v_sync_i < 0 + v_visible_area then     -- LR
                         rom_addr <= v_sync - (v_visible_area / 2) * (h_visible_area / 2) + (h_sync_i - (h_visible_area / 2));
                         s_rgb <= rom_i;
                     
