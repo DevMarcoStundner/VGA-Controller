@@ -14,6 +14,7 @@
 -------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity mem_control1 is
 
@@ -47,18 +48,17 @@ begin
         if reset_i = '1' then
             s_rgb      <= (others => '0');
             s_rom_addr <= (others => '0');
-            last_addr  := 0;
         
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
                 if h_sync_i >= 0 and h_sync_i < 0 + (h_visible_area / 2) then      -- Upper Half
 
-                    if v_sync_i >= 0 and v_sync_i < 0 (v_visible_area / 2) then    -- UR
-                        rom_addr <= v_sync_i * (h_visible_area / 2) + h_sync;
+                    if v_sync_i >= 0 and v_sync_i < 0 + (v_visible_area / 2) then    -- UR
+                        rom_addr := v_sync_i * (h_visible_area / 2) + h_sync_i;
                         s_rgb <= rom_i;
                     
                     elsif v_sync_i >= 0 + (v_visible_area / 2) and v_sync_i < 0 + v_visible_area then -- UL
-                        rom_addr <= (v_sync_i - (v_visible_area / 2)) * (h_visible_area / 2) + h_sync_i;
+                        rom_addr := (v_sync_i - (v_visible_area / 2)) * (h_visible_area / 2) + h_sync_i;
                         s_rgb <= rom_i;
 
                     end if;
@@ -66,11 +66,11 @@ begin
                 elsif h_sync_i >= 0 + (h_visible_area / 2) and h_sync_i < 0 + h_visible_area then     -- Lower Half
 
                     if v_sync_i >= 0 and v_sync_i < 0 + (v_visible_area / 2) then                      -- LL
-                        rom_addr <= v_sync_i * (h_visible_area / 2) + (h_sync_i - (h_visible_area / 2));
+                        rom_addr := v_sync_i * (h_visible_area / 2) + (h_sync_i - (h_visible_area / 2));
                         s_rgb <= rom_i;
                     
                     elsif v_sync_i >= 0 + (v_visible_area / 2) and v_sync_i < 0 + v_visible_area then     -- LR
-                        rom_addr <= v_sync - (v_visible_area / 2) * (h_visible_area / 2) + (h_sync_i - (h_visible_area / 2));
+                        rom_addr := v_sync_i - (v_visible_area / 2) * (h_visible_area / 2) + (h_sync_i - (h_visible_area / 2));
                         s_rgb <= rom_i;
                     
                     end if;
