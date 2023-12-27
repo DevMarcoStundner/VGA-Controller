@@ -1,0 +1,1 @@
+vcom ../vhdl/memory_control2.vhd

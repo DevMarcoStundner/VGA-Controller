@@ -434,78 +434,78 @@ R69
 !i113 1
 R12
 Etb_vga_control
-Z70 w1702890638
+Z70 w1702896619
 R1
 R2
 R3
-R4
-Z71 8../tb/tb_vga_control.vhd
-Z72 F../tb/tb_vga_control.vhd
+Z71 dC:/Users/marco/Documents/GitHub/VGA-Controller/sim
+Z72 8../tb/tb_vga_control.vhd
+Z73 F../tb/tb_vga_control.vhd
 l0
 L19
 V_RSjZe9>`9T`P>g?i1VK93
 !s100 E1S4;UoNRGSRG8HL<6aG52
 R7
 32
-Z73 !s110 1702890644
+Z74 !s110 1703672549
 !i10b 1
-Z74 !s108 1702890644.000000
-Z75 !s90 -reportprogress|300|../tb/tb_vga_control.vhd|
-Z76 !s107 ../tb/tb_vga_control.vhd|
+Z75 !s108 1703672549.000000
+Z76 !s90 -reportprogress|300|../tb/tb_vga_control.vhd|
+Z77 !s107 ../tb/tb_vga_control.vhd|
 !i113 1
 R12
 Asim
 R1
 R2
 R3
-Z77 DEx4 work 14 tb_vga_control 0 22 _RSjZe9>`9T`P>g?i1VK93
+Z78 DEx4 work 14 tb_vga_control 0 22 _RSjZe9>`9T`P>g?i1VK93
 l40
 L22
-VM[fAIFH8bjEhdg4S;`Ozd3
-!s100 4@0m_XKbJ`iJaWAkNU`k_2
+V31jmO<><XjMN^]a:IJFml1
+!s100 jUmTWaF3j?RVj^KP_U7G@0
 R7
 32
-R73
-!i10b 1
 R74
+!i10b 1
 R75
 R76
+R77
 !i113 1
 R12
 Evga
-Z78 w1702890250
+Z79 w1703672547
 R2
 R3
-R4
-Z79 8../vhdl/vga_control.vhd
-Z80 F../vhdl/vga_control.vhd
+R71
+Z80 8../vhdl/vga_control.vhd
+Z81 F../vhdl/vga_control.vhd
 l0
 L19
-VM419dC49mVddO^6LF<=zP2
-!s100 O2Gkd:]ccZY?Y_bfk[YZH3
+VLb=_Pgoa:g6Alb3S95NfN1
+!s100 A9=2i@d?SG<>?Tae0Scn:1
 R7
 32
-R73
-!i10b 1
 R74
-Z81 !s90 -reportprogress|300|../vhdl/vga_control.vhd|
-Z82 !s107 ../vhdl/vga_control.vhd|
+!i10b 1
+R75
+Z82 !s90 -reportprogress|300|../vhdl/vga_control.vhd|
+Z83 !s107 ../vhdl/vga_control.vhd|
 !i113 1
 R12
 Artl
 R2
 R3
-DEx4 work 3 vga 0 22 M419dC49mVddO^6LF<=zP2
-l46
-L32
-VSCmFk]QfSn2CKk>2=BZBi1
-!s100 gnTWh[lTj0Y1HSfN[?CF12
+DEx4 work 3 vga 0 22 Lb=_Pgoa:g6Alb3S95NfN1
+l55
+L34
+V2V9?_645K?R=@hH:5M]8R1
+!s100 cETT_4<GcDz1QWfD6nJ5_3
 R7
 32
-R73
-!i10b 1
 R74
-R81
+!i10b 1
+R75
 R82
+R83
 !i113 1
 R12

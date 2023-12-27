@@ -108,9 +108,6 @@ begin
                 end if;
             end if;
                 
-                
-                
-
             case s_states is
 
                 when MEM1 =>

@@ -22,10 +22,10 @@ entity vga is
         clk_i      : in std_logic;
         reset_i    : in std_logic;
         pixel_en_i : in std_logic;
-        rgb_i      : out std_logic_vector(11 downto 0);
+        rgb_i      : in std_logic_vector(11 downto 0);
         rgb_o      : out std_logic_vector(11 downto 0);
-        v_pulse    : out std_logic:
-        h_pulse    : out std_logic;
+        v_pulse_o    : out std_logic;
+        h_pulse_o    : out std_logic;
         v_sync_o   : out integer;
         h_sync_o   : out integer
         );
@@ -110,6 +110,6 @@ begin
     rgb_o    <= s_rgb;
     h_sync_o <= s_h_counter;
     v_sync_o <= s_v_counter;
-    h_pulse  <= s_h_pulse;
-    v_pulse  <= s_v_pulse;
+    h_pulse_o  <= s_h_pulse;
+    v_pulse_o  <= s_v_pulse;
 end rtl;
