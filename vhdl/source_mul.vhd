@@ -31,7 +31,7 @@ entity source_mul is
         rgb_o      : out std_logic_vector(11 downto 0);
         x_o        : out integer;
         y_o        : out integer;
-        );
+    );
 end source_mul;
 
 architecture rtl of source_mul is
