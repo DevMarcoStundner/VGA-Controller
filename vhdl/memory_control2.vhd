@@ -15,6 +15,7 @@
 -------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity mem_control2 is
 
@@ -35,7 +36,7 @@ end mem_control2;
 architecture rtl of mem_control2 is
 
     signal s_rgb      : std_logic_vector(11 downto 0);
-    signal s_rom_addr : std_logic_vector(13 downto 0);
+    signal s_rom_addr : std_logic_vector(16 downto 0);
     signal s_rom      : std_logic_vector(11 downto 0);
 
     constant last_addr : integer := 9999;
@@ -50,7 +51,6 @@ begin
             s_rgb      <= (others => '0');
             s_rom_addr <= (others => '0');
             s_rom      <= (others => '0');
-            last_addr  := 0;
         
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
@@ -60,7 +60,7 @@ begin
                     if v_sync_i >= y_i and v_sync_i < (y_i + pic_size) then
 
                         if h_sync_i = x_i and v_sync_i = y_i then
-                            rom_addr := 0;#
+                            rom_addr := 0;
 
                         end if;
 
