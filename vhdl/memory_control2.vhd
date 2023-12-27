@@ -28,7 +28,7 @@ entity mem_control2 is
         v_sync_i   : in integer;
         x_i        : in integer;
         y_i        : in integer;
-        rom_addr_o : out std_logic_vector(16 downto 0);
+        rom_addr_o : out std_logic_vector(13 downto 0);
         rgb_o      : out std_logic_vector(11 downto 0)
     );
 end mem_control2;
@@ -36,7 +36,7 @@ end mem_control2;
 architecture rtl of mem_control2 is
 
     signal s_rgb      : std_logic_vector(11 downto 0);
-    signal s_rom_addr : std_logic_vector(16 downto 0);
+    signal s_rom_addr : std_logic_vector(13 downto 0);
     signal s_rom      : std_logic_vector(11 downto 0);
 
     constant last_addr : integer := 9999;

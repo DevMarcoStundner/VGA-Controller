@@ -75,7 +75,7 @@ architecture rtl of vga_top is
             clk_i      : in std_logic;
             pixel_en_i : in std_logic;
             reset_i    : in std_logic;
-            pixelX_i   : in unsigned(9 downto 0);
+            pixelX_i   : in integer;
             rgb_o      : out std_logic_vector(11 downto 0)
         );
     end component;
@@ -85,8 +85,8 @@ architecture rtl of vga_top is
             clk_i      : in std_logic;
             pixel_en_i : in std_logic;
             reset_i    : in std_logic;
-            pixelX_i   : in unsigned(9 downto 0);
-            pixelY_i   : in unsigned(9 downto 0);
+            pixelX_i   : in integer;
+            pixelY_i   : in integer;
             rgb_o      : out std_logic_vector(11 downto 0)
         );
     end component;
@@ -153,3 +153,129 @@ architecture rtl of vga_top is
         );
     end component;
 
+    signal s_clk           : std_logic;
+    signal s_reset         : std_logic;
+    signal s_pixel_en      : std_logic;
+
+    signal s_sw            : std_logic_vector(15 downto 0);
+    signal s_pb            : std_logic_vector(3 downto 0);
+    signal s_swsync        : std_logic_vector(15 downto 0);
+    signal s_pbsync        : std_logic_vector(3 downto 0);
+
+    signal s_v_sync        : integer;
+    signal s_h_sync        : integer;
+    signal s_v_pulse       : std_logic;
+    signal s_h_pulse       : std_logic;
+
+    signal s_screen_r      : std_logic_vector(3 downto 0);
+    signal s_screen_g      : std_logic_vector(3 downto 0);  
+    signal s_screen_b      : std_logic_vector(3 downto 0);
+
+    signal s_rgb_pat1      : std_logic_vector(11 downto 0);
+    signal s_rgb_pat2      : std_logic_vector(11 downto 0);
+    signal s_rgb_mem1      : std_logic_vector(11 downto 0);
+    signal s_rgb_mem2      : std_logic_vector(11 downto 0);
+
+    signal s_control_rgb   : std_logic_vector(11 downto 0);
+
+    signal s_x             : integer;
+    signal s_y             : integer;
+
+    signal s_rom_addr_1    : std_logic_vector(16 downto 0);
+    signal s_rom_addr_2    : std_logic_vector(13 downto 0);
+    signal s_rom_1         : std_logic_vecotr(11 downto 0);
+    signal s_rom_2         : std_logic_vecotr(11 downto 0);
+
+begin
+
+    i_vga : vga
+    port map(
+            clk_i      => s_clk,
+            reset_i    => s_reset,
+            pixel_en_i => s_pixel_en,
+            rgb_i      => s_control_rgb,
+            v_pulse_o  => s_v_pulse,
+            h_pulse_o  => s_h_pulse,
+            s_v_sync_o => s_v_sync,
+            s_h_sync_o => s_h_sync
+    );
+
+    i_source_mul : source_mul
+    port map(
+            clk_i      => s_clk,
+            reset_i    => s_reset,
+            swsync_i   => s_swsync,
+            pbsync_i   => s_pbsync,
+            rgb_pat1_i => s_rgb_pat1,
+            rgb_pat2_i => s_rgb_pat2,
+            rgb_mem1_i => s_rgb_mem1,
+            rgb_mem2_i => s_rgb_mem2,
+            h_sync_i   => s_h_sync,
+            v_sync_i   => s_v_sync,
+            rgb_o      => s_control_rgb,
+            x_o        => s_x,
+            y_o        => s_y
+    );
+
+    i_prescaler : prescaler
+    port map(
+            clk_i    => s_clk,
+            reset_i  => s_reset,
+            pixel_en => s_pixe_en
+    );
+
+    i_pattern_gen1 : pattern_gen1
+    port map(
+            clk_i      => s_clk,
+            reset_i    => s_reset,
+            pixel_en_i => s_pixel_en,
+            pixelX_i   => s_h_sync,
+            rgb_o      => s_rgb_pat1
+    );
+
+    i_patter_gen2 : pattern_gen2
+    port map(
+            clk_i      => s_clk,
+            reset_i    => s_reset,
+            pixel_en_i => s_pixel_en,
+            pixelX_i   => s_h_sync,
+            pixelY_i   => s_v_sync,
+            rgb_o      => s_rgb_pat2
+    );
+
+    i_io_logic : io_logic
+    port map(
+        clk_i    => s_clk,
+        reset_i  => s_reset,
+        enable_i => s_pixel_en,
+        sw_i     => s_sw,
+        pb_i     => s_pb,
+        swsync_o => s_swsync,
+        pbsync_o => s_pbsync
+    );
+
+    i_mem_control1 : mem_control1
+    port map(
+            clk_i      => s_clk,
+            reset_i    => s_reset,
+            pixel_en_i => s_pixel_en,
+            rom_i      => s_rom_1,
+            h_sync_i   => s_h_sync,
+            v_sync_i   => s_v_sync,
+            rom_addr_o => s_rom_addr_1,
+            rgb_o      => s_rgb_mem1
+    );
+
+    i_mem_control2 : mem_control2
+    port map(
+            clk_i      => s_clk,
+            reset_i    => s_reset,
+            pixel_en_i => s_pixel_en, 
+            rom_i      => s_rom_2,
+            h_sync_i   => s_h_sync,
+            v_sync_i   => s_v_sync,
+            x_i        => s_x,
+            y_i        => s_y,
+            rom_addr_o => s_rom_addr_2,
+            rgb_o      => s_rgb_mem2
+    );

@@ -21,7 +21,7 @@ entity pattern_gen1 is
         clk_i      : in std_logic;
         pixel_en_i : in std_logic;
         reset_i    : in std_logic;
-        pixelX_i   : in unsigned(9 downto 0);
+        pixelX_i   : in integer;
         rgb_o      : out std_logic_vector(11 downto 0)
         );
 end pattern_gen1;
@@ -41,7 +41,7 @@ begin
 
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
-                case to_integer(pixelX_i) is
+                case pixelX_i is
                     when 0 to 39 =>
                         s_rgb <= red;
                     when 40 to 79 =>
