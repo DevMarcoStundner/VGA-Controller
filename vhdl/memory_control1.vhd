@@ -40,13 +40,14 @@ architecture rtl of mem_control1 is
 
 
 begin
-    p_mem_control : process (reset_i, clk_i)
+    p_mem_control1 : process (reset_i, clk_i)
 
-    variable rom_addr : natural range 0 to last_addr;
+    variable rom_addr : integer range 0 to last_addr;
     begin
         if reset_i = '1' then
             s_rgb      <= (others => '0');
             s_rom_addr <= (others => '0');
+            last_addr  := 0;
         
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
