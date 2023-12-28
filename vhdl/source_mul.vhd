@@ -16,7 +16,6 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity source_mul is
-
     port(
         clk_i      : in std_logic;
         reset_i    : in std_logic;
@@ -30,7 +29,7 @@ entity source_mul is
         v_sync_i   : in integer;
         rgb_o      : out std_logic_vector(11 downto 0);
         x_o        : out integer;
-        y_o        : out integer;
+        y_o        : out integer
     );
 end source_mul;
 
@@ -48,12 +47,16 @@ constant pic_size  : integer := 100;
 begin
 
     p_fsm : process(clk_i, reset_i)
+
+    variable v_x : integer;
+    variable v_y : integer;
+
     begin
         if reset_i = '1' then
             s_states <= MEM1;
             s_rgb    <= (others => '0');
-            s_x      := 100;
-            s_y      := 100;
+            v_x      := 100;
+            v_y      := 100;
 
         elsif clk_i'event and clk_i = '1' then
 
@@ -66,44 +69,39 @@ begin
             elsif swsync_i(0) = '0' and swsync_i(0) = '0' then      -- Pat 1
                 s_states <= PAT1;
 
-            elsif swsync_i(2) = '1' then                          -- Move_Obj
-                s_states <= MOVE_OBJ;
-
-            end if;
-
             if pbsync_i = "1000" then
-                if s_x >= 40 then
-                    s_x :=  s_x - 10;
+                if v_x >= 40 then
+                    v_x :=  v_x - 10;
                 
                 else
-                    s_x := 0;
+                    v_x := 0;
                 
                 end if;
             
             elsif pbsync_i = "0100" then
-                if s_y >= 40 then
-                    s_y := s_y - 10;
+                if v_y >= 40 then
+                    v_y := v_y - 10;
 
                 else
-                    s_y := 0;
+                    v_y := 0;
 
                 end if;
 
             elsif pbsync_i = "0010" then
-                if s_x = 540 then
-                    s_x := s_x;
+                if v_x = 540 then
+                    v_x := v_x;
                 
                 else
-                    s_x := s_x - 10;
+                    v_x := v_x - 10;
 
                 end if;
 
             elsif pbsync_i = "0001" then
-                if s_y = 360 then
-                    s_y := s_y;
+                if v_y = 360 then
+                    v_y := v_y;
 
                 else
-                    s_y := s_y + 10;
+                    v_y := v_y + 10;
                 
                 end if;
             end if;
@@ -112,8 +110,8 @@ begin
 
                 when MEM1 =>
                     if swsync_i(2) = '1' then
-                        if h_sync_i >= x_pos and h_sync_i < (x_pos + pic_size) then
-                            if v_sync_i >= y_pos and v_sync_i < (y_pos + pic_size) then
+                        if h_sync_i >= v_x and h_sync_i < (v_x + pic_size) then
+                            if v_sync_i >= v_y and v_sync_i < (v_y + pic_size) then
                                 s_rgb <= rgb_mem2_i;
 
                             else
@@ -125,16 +123,16 @@ begin
 
                         end if;
                     else
-                        s_x      := 100;
-                        s_y      := 100;
+                        v_x      := 100;
+                        v_y      := 100;
                         s_rgb    <= rgb_mem1_i;
 
                     end if;
 
                 when PAT1 =>
                     if swsync_i(2) = '1' then
-                        if h_sync_i >= x_pos and h_sync_i < (x_pos + pic_size) then
-                            if v_sync_i >= y_pos and v_sync_i < (y_pos + pic_size) then
+                        if h_sync_i >= v_x and h_sync_i < (v_x + pic_size) then
+                            if v_sync_i >= v_y and v_sync_i < (v_y + pic_size) then
                                 s_rgb <= rgb_mem2_i;
 
                             else
@@ -146,16 +144,16 @@ begin
                         
                         end if;
                     else
-                        s_x      := 100;
-                        s_y      := 100;
+                        v_x      := 100;
+                        v_y      := 100;
                         s_rgb    <= rgb_pat1_i;
                     
                     end if;
 
                 when PAT2 =>
                     if swsync_i(2) = '1' then
-                        if h_sync_i >= s_x and h_sync_i < (s_x + pic_size) then
-                            if v_sync_i >= s_y and v_sync_i < (s_y + pic_size) then
+                        if h_sync_i >= v_x and h_sync_i < (v_x + pic_size) then
+                            if v_sync_i >= v_y and v_sync_i < (v_y + pic_size) then
                                 s_rgb <= rgb_mem2_i;
                             
                             else 
@@ -167,12 +165,15 @@ begin
 
                         end if;
                     else
-                        s_x      := 100;
-                        s_y      := 100;
+                        v_x      := 100;
+                        v_y      := 100;
                         s_rgb    <= rgb_pat2_i;
                     
                     end if;
-            end case;
+                end case;
+                s_x <= v_x;
+                s_y <= s_y;
+            end if;
         end if;
     end process;
 

@@ -41,7 +41,7 @@ begin
 
 	tb_vga_control : vga_control
 	port map(
-			clk_i      =>  clk_i,
+			clk_i      => clk_i,
 			reset_i    => reset_i,
 			pixel_en_i => pixel_en_i,
 			rgb_i	   => rgb_i,
