@@ -55,10 +55,7 @@
 COMPONENT memory_pic
   PORT (
     clka : IN STD_LOGIC;
-    ena : IN STD_LOGIC;
-    wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     addra : IN STD_LOGIC_VECTOR(16 DOWNTO 0);
-    dina : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
     douta : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
   );
 END COMPONENT;
@@ -71,10 +68,7 @@ END COMPONENT;
 your_instance_name : memory_pic
   PORT MAP (
     clka => clka,
-    ena => ena,
-    wea => wea,
     addra => addra,
-    dina => dina,
     douta => douta
   );
 -- INST_TAG_END ------ End INSTANTIATION Template ---------
