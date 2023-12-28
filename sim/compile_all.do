@@ -32,3 +32,9 @@ vcom ../tb/tb_vga_control.vhd
 vcom ../vhdl/vga_top.vhd
 vcom ../tb/tb_vga_top.vhd
 
+vcom ../vhdl/vga_top_sim.vhd
+vcom ../tb/tb_vga_top_sim.vhd
+vcom ../tb/vga_monitor_.vhd
+vcom ../tb/vga_monitor_sim.vhd
+
+
