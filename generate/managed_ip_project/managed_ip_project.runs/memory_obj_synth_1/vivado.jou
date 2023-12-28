@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.1 (64-bit)
+# SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
+# IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
+# Start of session at: Thu Dec 28 15:46:08 2023
+# Process ID: 4120
+# Current directory: C:/Users/marco/Desktop/FH/CHIP2/VGA_Controller/generate/managed_ip_project/managed_ip_project.runs/memory_obj_synth_1
+# Command line: vivado.exe -log memory_obj.vds -mode batch -messageDb vivado.pb -notrace -source memory_obj.tcl
+# Log file: C:/Users/marco/Desktop/FH/CHIP2/VGA_Controller/generate/managed_ip_project/managed_ip_project.runs/memory_obj_synth_1/memory_obj.vds
+# Journal file: C:/Users/marco/Desktop/FH/CHIP2/VGA_Controller/generate/managed_ip_project/managed_ip_project.runs/memory_obj_synth_1\vivado.jou
+#-----------------------------------------------------------
+source memory_obj.tcl -notrace

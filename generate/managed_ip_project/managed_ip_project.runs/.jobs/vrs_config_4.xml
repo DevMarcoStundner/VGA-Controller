@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="memory_obj_synth_1" LaunchDir="C:/Users/marco/Desktop/FH/CHIP2/VGA_Controller/generate/managed_ip_project/managed_ip_project.runs/memory_obj_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+</Runs>
+

@@ -39,7 +39,7 @@ architecture rtl of mem_control1 is
     constant v_visible_area     : integer := 480;
     constant last_addr          : integer := 76799;
 
--- always enable achten ob das wirklich passt
+
 begin
     p_mem_control1 : process (reset_i, clk_i)
 
