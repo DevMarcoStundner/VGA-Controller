@@ -57,7 +57,7 @@ architecture rtl of vga_top is
             v_sync_i   : in integer;
             rgb_o      : out std_logic_vector(11 downto 0);
             x_o        : out integer;
-            y_o        : out integer;
+            y_o        : out integer
         );
     end component;
 
@@ -126,29 +126,23 @@ architecture rtl of vga_top is
             v_sync_i   : in integer;
             x_i        : in integer;
             y_i        : in integer;
-            rom_addr_o : out std_logic_vector(16 downto 0);
+            rom_addr_o : out std_logic_vector(13 downto 0);
             rgb_o      : out std_logic_vector(11 downto 0)
         );
     end component;
 
     component memory_obj
-        PORT (
+        PORT(
             clka : IN STD_LOGIC;
-            ena : IN STD_LOGIC;
-            wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
             addra : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
-            dina : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
             douta : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
         );
     end component;
 
     component memory_pic
-        PORT (
+        PORT(
             clka : IN STD_LOGIC;
-            ena : IN STD_LOGIC;
-            wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
             addra : IN STD_LOGIC_VECTOR(16 DOWNTO 0);
-            dina : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
             douta : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
         );
     end component;
@@ -183,8 +177,8 @@ architecture rtl of vga_top is
 
     signal s_rom_addr_1    : std_logic_vector(16 downto 0);
     signal s_rom_addr_2    : std_logic_vector(13 downto 0);
-    signal s_rom_1         : std_logic_vecotr(11 downto 0);
-    signal s_rom_2         : std_logic_vecotr(11 downto 0);
+    signal s_rom_1         : std_logic_vector(11 downto 0);
+    signal s_rom_2         : std_logic_vector(11 downto 0);
 
 begin
 
@@ -196,8 +190,8 @@ begin
             rgb_i      => s_control_rgb,
             v_pulse_o  => s_v_pulse,
             h_pulse_o  => s_h_pulse,
-            s_v_sync_o => s_v_sync,
-            s_h_sync_o => s_h_sync
+            v_sync_o => s_v_sync,
+            h_sync_o => s_h_sync
     );
 
     i_source_mul : source_mul
@@ -221,7 +215,7 @@ begin
     port map(
             clk_i    => s_clk,
             reset_i  => s_reset,
-            pixel_en => s_pixe_en
+            pixel_en => s_pixel_en
     );
 
     i_pattern_gen1 : pattern_gen1
@@ -245,13 +239,13 @@ begin
 
     i_io_logic : io_logic
     port map(
-        clk_i    => s_clk,
-        reset_i  => s_reset,
-        enable_i => s_pixel_en,
-        sw_i     => s_sw,
-        pb_i     => s_pb,
-        swsync_o => s_swsync,
-        pbsync_o => s_pbsync
+            clk_i    => s_clk,
+            reset_i  => s_reset,
+            enable_i => s_pixel_en,
+            sw_i     => s_sw,
+            pb_i     => s_pb,
+            swsync_o => s_swsync,
+            pbsync_o => s_pbsync
     );
 
     i_mem_control1 : mem_control1
@@ -279,3 +273,19 @@ begin
             rom_addr_o => s_rom_addr_2,
             rgb_o      => s_rgb_mem2
     );
+
+    i_memory_pic : memory_pic
+    port map(
+            clka  => s_clk,
+            addra => s_rom_addr_1,
+            douta => s_rom_1
+    );
+
+    i_memory_obj : memory_obj
+    port map(
+            clka  => s_clk,
+            addra => s_rom_addr_2,
+            douta => s_rom_2
+    );
+
+end rtl;

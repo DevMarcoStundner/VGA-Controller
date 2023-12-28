@@ -1,0 +1,1 @@
+vcom ../vhdl/vga_top.vhd
