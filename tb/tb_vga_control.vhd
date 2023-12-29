@@ -21,31 +21,35 @@ end tb_vga_control;
 
 architecture sim of tb_vga_control is
 
-	component vga_control
+	component vga
 		port(
 			clk_i      : in std_logic;
 			reset_i    : in std_logic;
 			pixel_en_i : in std_logic;
-			rgb_i      : out std_logic_vector(11 downto 0);
-        	rgb_o      : out std_logic_vector(11 downto 0);
-			v_sync_o   : out std_logic;
-			h_sync_o   : out std_logic
+			rgb_i      : in std_logic_vector(11 downto 0);
+      rgb_o      : out std_logic_vector(11 downto 0);
+			v_pulse_o  : out std_logic;
+			h_pulse_o  : out std_logic;
+			v_sync_o   : out integer;
+			h_sync_o   : out integer
 			);
 	end component;
 
-	signal clk_i, reset_i, pixel_en_i   : std_logic := '0';
-	signal rgb_i, rgb_o 				: std_logic_vector(11 downto 0);
-	signal v_sync_o, h_sync_o 			: std_logic := '0';
+	signal clk_i, reset_i, pixel_en_i, v_pulse_o, h_pulse_o   : std_logic := '0';
+	signal rgb_i, rgb_o 																			: std_logic_vector(11 downto 0);
+	signal v_sync_o, h_sync_o 																: integer := 0;
 
 begin
 
-	tb_vga_control : vga_control
+	tb_vga_control : vga
 	port map(
 			clk_i      => clk_i,
 			reset_i    => reset_i,
 			pixel_en_i => pixel_en_i,
-			rgb_i	   => rgb_i,
-			rgb_o	   => rgb_o,
+			rgb_i	     => rgb_i,
+			rgb_o	     => rgb_o,
+			v_pulse_o  => v_pulse_o,
+			h_pulse_o  => h_pulse_o,
 			v_sync_o   => v_sync_o,
 			h_sync_o   => h_sync_o
 			);
@@ -73,6 +77,8 @@ begin
 		pixel_en_i <= '0';
 		wait for 0.5 ms;
 	end process;
+
+
 
 	
 

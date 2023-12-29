@@ -9,7 +9,7 @@
 -- Design Unit: VGA Top Level Unit Testbench
 --
 -- Description: The “VGA Top Level Unit” interconnects the subunits and interfaces to the circuitry
--- of the Digilant Basys3 FPGA Board.
+-- of FPGA Board.
 --
 -------------------------------------------------------------------------------
 library ieee;

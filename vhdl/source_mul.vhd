@@ -25,11 +25,11 @@ entity source_mul is
         rgb_pat2_i : in std_logic_vector(11 downto 0);
         rgb_mem1_i : in std_logic_vector(11 downto 0);
         rgb_mem2_i : in std_logic_vector(11 downto 0);
-        h_sync_i   : in integer;
-        v_sync_i   : in integer;
+        h_sync_i   : in natural;
+        v_sync_i   : in natural;
         rgb_o      : out std_logic_vector(11 downto 0);
-        x_o        : out integer;
-        y_o        : out integer
+        x_o        : out natural;
+        y_o        : out natural
     );
 end source_mul;
 
@@ -38,18 +38,18 @@ architecture rtl of source_mul is
 type fsm_states is (MEM1, PAT1, PAT2);
 signal s_states : fsm_states;
 signal s_rgb    : std_logic_vector(11 downto 0);
-signal s_x      : integer;
-signal s_y      : integer;
+signal s_x      : natural;
+signal s_y      : natural;
 
-constant pic_size  : integer := 100;
+constant pic_size  : natural := 100;
 
 
 begin
 
     p_fsm : process(clk_i, reset_i)
 
-    variable v_x : integer;
-    variable v_y : integer;
+    variable v_x : natural;
+    variable v_y : natural;
 
     begin
         if reset_i = '1' then

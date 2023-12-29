@@ -24,10 +24,10 @@ entity mem_control2 is
         reset_i    : in std_logic;
         pixel_en_i : in std_logic;
         rom_i      : in std_logic_vector(11 downto 0);
-        h_sync_i   : in integer;
-        v_sync_i   : in integer;
-        x_i        : in integer;
-        y_i        : in integer;
+        h_sync_i   : in natural;
+        v_sync_i   : in natural;
+        x_i        : in natural;
+        y_i        : in natural;
         rom_addr_o : out std_logic_vector(13 downto 0);
         rgb_o      : out std_logic_vector(11 downto 0)
     );
@@ -39,13 +39,13 @@ architecture rtl of mem_control2 is
     signal s_rom_addr : std_logic_vector(13 downto 0);
     signal s_rom      : std_logic_vector(11 downto 0);
 
-    constant last_addr : integer := 9999;
-    constant pic_size  : integer := 100;
+    constant last_addr : natural := 9999;
+    constant pic_size  : natural := 100;
 
 begin
     p_mem_control2 : process (reset_i, clk_i)
 
-    variable rom_addr : integer range 0 to last_addr;
+    variable rom_addr : natural range 0 to last_addr;
     begin
         if reset_i = '1' then
             s_rgb      <= (others => '0');

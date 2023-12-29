@@ -20,8 +20,8 @@ entity pattern_gen2 is
         clk_i      : in std_logic;
         pixel_en_i : in std_logic;
         reset_i    : in std_logic;
-        pixelX_i   : in integer;
-        pixelY_i   : in integer;
+        pixelX_i   : in natural;
+        pixelY_i   : in natural;
         rgb_o      : out std_logic_vector(11 downto 0)
         );
 end pattern_gen2;

@@ -9,7 +9,7 @@
 -- Design Unit: VGA Top Level Unit Testbench
 --
 -- Description: The “VGA Top Level Unit” interconnects the subunits and interfaces to the circuitry
--- of the Digilant Basys3 FPGA Board.
+-- of FPGA Board.
 --
 -------------------------------------------------------------------------------
 library ieee;
@@ -33,10 +33,10 @@ architecture sim of tb_vga_top is
     end component;
 
     signal clk_i, reset_i       : std_logic := '0';
-    signal rgb_o 				: std_logic_vector(11 downto 0);
+    signal rgb_o 				: std_logic_vector(11 downto 0) := (others => '0');
 	signal v_pulse_o, h_pulse_o : std_logic := '0';
-    signal sw_i                 : std_logic_vector(15 downto 0);
-    signal pb_i                 : std_logic_vector(3 downto 0);
+    signal sw_i                 : std_logic_vector(15 downto 0):= (others => '0');
+    signal pb_i                 : std_logic_vector(3 downto 0):= (others => '0');
 
 begin
 
@@ -50,7 +50,6 @@ begin
             h_pulse_o => h_pulse_o,
             v_pulse_o => v_pulse_o
             );
-
 
     CLK_p : process                     -- 100 Mhz
 	begin

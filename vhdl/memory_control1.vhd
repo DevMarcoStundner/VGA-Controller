@@ -23,8 +23,8 @@ entity mem_control1 is
         reset_i    : in std_logic;
         pixel_en_i : in std_logic;
         rom_i      : in std_logic_vector(11 downto 0);
-        h_sync_i   : in integer;
-        v_sync_i   : in integer;
+        h_sync_i   : in natural;
+        v_sync_i   : in natural;
         rom_addr_o : out std_logic_vector(16 downto 0);
         rgb_o      : out std_logic_vector(11 downto 0)
         );
@@ -35,15 +35,15 @@ architecture rtl of mem_control1 is
     signal s_rgb      : std_logic_vector(11 downto 0);
     signal s_rom_addr : std_logic_vector(16 downto 0);
 
-    constant h_visible_area     : integer := 640;
-    constant v_visible_area     : integer := 480;
-    constant last_addr          : integer := 76799;
+    constant h_visible_area     : natural := 640;
+    constant v_visible_area     : natural := 480;
+    constant last_addr          : natural := 76799;
 
 
 begin
     p_mem_control1 : process (reset_i, clk_i)
 
-    variable rom_addr : integer range 0 to last_addr;
+    variable rom_addr : natural range 0 to last_addr;
     begin
         if reset_i = '1' then
             s_rgb      <= (others => '0');
@@ -70,7 +70,7 @@ begin
                         s_rgb <= rom_i;
                     
                     elsif v_sync_i >= 0 + (v_visible_area / 2) and v_sync_i < 0 + v_visible_area then     -- LR
-                        rom_addr := v_sync_i - (v_visible_area / 2) * (h_visible_area / 2) + (h_sync_i - (h_visible_area / 2));
+                        rom_addr := (v_sync_i - (v_visible_area / 2)) * (h_visible_area / 2) + (h_sync_i - (h_visible_area / 2));
                         s_rgb <= rom_i;
                     
                     end if;

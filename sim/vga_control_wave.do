@@ -7,7 +7,8 @@ add wave -noupdate -format Logic /tb_vga_control/rgb_i
 add wave -noupdate -format Logic /tb_vga_control/rgb_o
 add wave -noupdate -format Logic /tb_vga_control/v_sync_o
 add wave -noupdate -format Logic /tb_vga_control/h_sync_o
-
+add wave -noupdate -format Logic /tb_vga_control/v_pulse_o
+add wave -noupdate -format Logic /tb_vga_control/h_pulse_o
 
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {0 ps}

@@ -15,9 +15,9 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity vga is 
-
     port(
         clk_i      : in std_logic;
         reset_i    : in std_logic;
@@ -26,30 +26,30 @@ entity vga is
         rgb_o      : out std_logic_vector(11 downto 0);
         v_pulse_o  : out std_logic;
         h_pulse_o  : out std_logic;
-        v_sync_o   : out integer;
-        h_sync_o   : out integer
+        v_sync_o   : out natural;
+        h_sync_o   : out natural
         );
 end vga;
 
 architecture rtl of vga is
 
-    signal s_h_counter : integer := 0;
-    signal s_v_counter : integer := 0;
+    signal s_h_counter : natural := 0;
+    signal s_v_counter : natural := 0;
     signal s_v_pulse   : std_logic;
     signal s_h_pulse   : std_logic;
     signal s_rgb       : std_logic_vector(11 downto 0);
 
-    constant h_visible_area     : integer := 640;
-    constant v_visible_area     : integer := 480;
-    constant h_pulse            : integer := 96;
-    constant v_pulse            : integer := 2;
-    constant h_front_porch      : integer := 16;
-    constant v_front_porch      : integer := 10;
-    constant h_back_porch       : integer := 48;
-    constant v_back_porch       : integer := 33;
+    constant h_visible_area     : natural := 640;
+    constant v_visible_area     : natural := 480;
+    constant h_pulse            : natural := 96;
+    constant v_pulse            : natural := 2;
+    constant h_front_porch      : natural := 16;
+    constant v_front_porch      : natural := 10;
+    constant h_back_porch       : natural := 48;
+    constant v_back_porch       : natural := 33;
 
-    constant h_time    : integer := 640 + 96 + 16 + 48;
-    constant v_time    : integer := 480 + 2 + 10 + 33; 
+    constant h_time    : natural := 640 + 96 + 16 + 48;
+    constant v_time    : natural := 480 + 2 + 10 + 33; 
 
 
 begin
@@ -59,6 +59,8 @@ begin
             s_rgb       <= (others => '0');
             s_h_counter <= 0;
             s_v_counter <= 0;
+            s_v_pulse   <= '0';
+            s_h_pulse   <= '0';
 
         elsif clk_i'event and clk_i = '1' then
 
