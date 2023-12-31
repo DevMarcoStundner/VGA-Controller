@@ -161,13 +161,16 @@ architecture rtl of vga_top_sim is
 
     signal s_v_sync        : natural;
     signal s_h_sync        : natural;
+    signal h_pulse_o       : std_logic;
+    signal v_pulse_o       : std_logic;
 
     signal s_rgb_pat1      : std_logic_vector(11 downto 0);
     signal s_rgb_pat2      : std_logic_vector(11 downto 0);
     signal s_rgb_mem1      : std_logic_vector(11 downto 0);
     signal s_rgb_mem2      : std_logic_vector(11 downto 0);
     signal s_rgb_i         : std_logic_vector(11 downto 0);
-
+    signal rgb_o           : std_logic_vector(11 downto 0);
+    
     signal s_x             : natural;
     signal s_y             : natural;
 
@@ -178,6 +181,16 @@ architecture rtl of vga_top_sim is
 
 
 begin
+
+    i_vga_monitor : vga_monitor
+    port map(
+            s_reset_i     => reset_i,
+            s_vga_hsync_i => h_pulse_o,
+            s_vga_vsync_i => v_pulse_o,
+            s_vga_red_i   => rgb_o(3 downto 0),
+            s_vga_green_i => rgb_o(7 downto 4),
+            s_vga_blue_i  => rgb_o(11 downto 8)
+    );
 
     i_vga : vga
     port map(

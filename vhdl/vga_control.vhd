@@ -33,8 +33,6 @@ end vga;
 
 architecture rtl of vga is
 
-    signal s_h_counter : natural := 0;
-    signal s_v_counter : natural := 0;
     signal s_v_pulse   : std_logic;
     signal s_h_pulse   : std_logic;
     signal s_rgb       : std_logic_vector(11 downto 0);
@@ -48,9 +46,11 @@ architecture rtl of vga is
     constant h_back_porch       : natural := 48;
     constant v_back_porch       : natural := 33;
 
-    constant h_time    : natural := 640 + 96 + 16 + 48;
-    constant v_time    : natural := 480 + 2 + 10 + 33; 
+    constant h_time    : natural := h_visible_area + h_pulse + h_front_porch + h_back_porch;
+    constant v_time    : natural := v_visible_area + v_pulse + v_front_porch + v_back_porch; 
 
+    signal s_h_counter : natural range 0 to (h_time - 1);
+    signal s_v_counter : natural range 0 to (v_time - 1);
 
 begin
     p_vga : process(clk_i, reset_i)
@@ -68,42 +68,32 @@ begin
 
                 if s_h_counter < h_time - 1 then
                     s_h_counter <= s_h_counter + 1;
-
                 else
                     s_h_counter <= 0;
-
                     if s_v_counter < v_time - 1 then
                         s_v_counter <= s_v_counter + 1;
-
                     else
-                        s_v_counter <= 0;
-                        
+                        s_v_counter <= 0;     
                     end if;
                 end if;
 
-                if s_h_counter > h_front_porch and s_h_counter <= h_front_porch + h_visible_area then
+                if (s_h_counter > h_front_porch) and s_h_counter <= (h_front_porch + h_visible_area) then
                     s_rgb <= rgb_i;
-                    
                 else
                     s_rgb <= (others => '0');
-                    
-                end if ;
+                end if;
 
                 if (s_h_counter > h_front_porch + h_visible_area) and (s_h_counter < h_front_porch + h_visible_area + h_pulse) then
                     s_h_pulse <= '1';
-
                 else
                     s_h_pulse <= '0';
-
                 end if;
-
                 if (s_v_counter > v_front_porch + v_visible_area) and (s_v_counter < v_front_porch + v_visible_area + v_pulse) then
                     s_v_pulse <= '1';
-
                 else
                     s_v_pulse <= '0';
+                end if;      
 
-                end if;                
             end if;
             s_rgb <= rgb_i;
         end if;
