@@ -27,7 +27,6 @@ architecture sim of tb_pattern_gen1 is
             pixel_en_i : in std_logic;
             reset_i    : in std_logic;
             h_sync_i   : in natural;
-            count_t    : out natural;
             r_o        : out std_logic_vector(3 downto 0);
             g_o        : out std_logic_vector(3 downto 0);
             b_o        : out std_logic_vector(3 downto 0)
@@ -36,7 +35,7 @@ architecture sim of tb_pattern_gen1 is
 
     signal clk_i, reset_i, pixel_en_i  : std_logic := '0';
     signal r_o, g_o, b_o               : std_logic_vector(3 downto 0);
-    signal h_sync_i,count                    : natural := 0;
+    signal h_sync_i                    : natural := 0;
     signal h_total                     : natural := 800;
 
 begin
@@ -49,7 +48,6 @@ begin
             r_o        => r_o,
             g_o        => g_o,
             b_o        => b_o,
-            count_t      => count,
             h_sync_i   => h_sync_i
             );
 

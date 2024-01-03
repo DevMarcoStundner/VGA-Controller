@@ -22,7 +22,6 @@ entity pattern_gen1 is
         pixel_en_i : in std_logic;
         reset_i    : in std_logic;
         h_sync_i   : in natural;
-        count_t    : out natural;
         r_o        : out std_logic_vector(3 downto 0);
         g_o        : out std_logic_vector(3 downto 0);
         b_o        : out std_logic_vector(3 downto 0)
@@ -31,7 +30,6 @@ end pattern_gen1;
 
 architecture rtl of pattern_gen1 is
     signal s_rgb                : std_logic_vector(11 downto 0);
-    signal s_count : natural;
 
     constant red                : std_logic_vector(11 downto 0) := "111100000000";
     constant green              : std_logic_vector(11 downto 0) := "000011110000";
@@ -78,10 +76,8 @@ begin
                 end if;    
             end if;
         end if;
-        s_count <= count;
     end process p_stripe;
-    
-    count_t <= s_count;
+
     r_o <= s_rgb(11 downto 8);
     g_o <= s_rgb(7 downto 4);
     b_o <= s_rgb(3 downto 0);
