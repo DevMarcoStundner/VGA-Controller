@@ -26,14 +26,18 @@ architecture sim of tb_pattern_gen1 is
             clk_i      : in std_logic;
             pixel_en_i : in std_logic;
             reset_i    : in std_logic;
-            pixelX_i   : in unsigned(9 downto 0);
-            rgb_o      : out std_logic_vector(11 downto 0)
+            h_sync_i   : in natural;
+            count_t    : out natural;
+            r_o        : out std_logic_vector(3 downto 0);
+            g_o        : out std_logic_vector(3 downto 0);
+            b_o        : out std_logic_vector(3 downto 0)
             );
     end component;
 
     signal clk_i, reset_i, pixel_en_i  : std_logic := '0';
-    signal pixelX_i                    : unsigned(9 downto 0);
-    signal rgb_o                       : std_logic_vector(11 downto 0);
+    signal r_o, g_o, b_o               : std_logic_vector(3 downto 0);
+    signal h_sync_i,count                    : natural := 0;
+    signal h_total                     : natural := 800;
 
 begin
 
@@ -42,8 +46,11 @@ begin
             clk_i      =>  clk_i,
             reset_i    => reset_i,
             pixel_en_i => pixel_en_i,
-            pixelX_i   => pixelX_i,
-            rgb_o      => rgb_o
+            r_o        => r_o,
+            g_o        => g_o,
+            b_o        => b_o,
+            count_t      => count,
+            h_sync_i   => h_sync_i
             );
 
     CLK_p : process                     -- 100 Mhz
@@ -57,7 +64,7 @@ begin
     R_p : process
         begin
             reset_i <= '1';
-            wait for 15 us;
+            wait for 15 ns;
             reset_i <= '0';
             wait;
     end process;
@@ -65,35 +72,20 @@ begin
     Enable_p  :  process
     begin
         pixel_en_i <= '1';
-        wait for 0.5 ms;
+        wait for 20 ns;
         pixel_en_i <= '0';
-        wait for 0.5 ms;
+        wait for 20 ns;
     end process;
 
     pixel_p : process
     begin
-        wait for 15 us;
-        pixelX_i <= to_unsigned(79, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(559, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(39, pixelX_i'length);
-        wait for 40 us;
+        if h_sync_i = h_total - 1 then 
+            h_sync_i <= 0;
+        else
+            h_sync_i <= h_sync_i + 1;
+        end if;
 
-        pixelX_i <= to_unsigned(119, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(159, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(239, pixelX_i'length);
-        wait for 40 us;
-
-        pixelX_i <= to_unsigned(279, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(319, pixelX_i'length);
-        wait for 40 us;
-        pixelX_i <= to_unsigned(400, pixelX_i'length);
-        wait;
-       
+        wait for 40 ns;
     end process;
 
 end sim;

@@ -230,6 +230,7 @@ begin
           assert false
             report "VGA Monitor: Rising H-Sync edge detected, starting to perform horizontal timing checks ..."
             severity note;
+          report "now: " & time'image(now) & "v_t: " & time'image(v_t) & "now - v_t: " & time'image(now - v_t);
           if ((now - v_t) <= c_h_frontporch) then
             s_line <= c_v_frame - c_v_backporch - 1;
 

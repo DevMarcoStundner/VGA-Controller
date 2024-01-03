@@ -30,7 +30,7 @@ end prescaler;
 
 architecture rtl of prescaler is
 
-    constant ENCOUNTVAL_25kHz : integer:= 4;
+    constant ENCOUNTVAL_25kHz : integer:= 3;
     constant ENCOUNTVAL_1kHz : integer:= 100000;
     signal s_enctr_25 : integer := 0;
     signal s_enctr_1  : integer := 0;
