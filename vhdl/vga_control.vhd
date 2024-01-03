@@ -46,11 +46,11 @@ architecture rtl of vga is
     constant h_back_porch       : natural := 48;
     constant v_back_porch       : natural := 33;
 
-    constant h_time    : natural := h_visible_area + h_pulse + h_front_porch + h_back_porch;
-    constant v_time    : natural := v_visible_area + v_pulse + v_front_porch + v_back_porch; 
+    constant h_total            : natural := h_visible_area + h_pulse + h_front_porch + h_back_porch;
+    constant v_total            : natural := v_visible_area + v_pulse + v_front_porch + v_back_porch; 
 
-    signal s_h_counter : natural range 0 to (h_time - 1);
-    signal s_v_counter : natural range 0 to (v_time - 1);
+    signal s_h_counter : natural range 0 to (h_total - 1);
+    signal s_v_counter : natural range 0 to (v_total - 1);
 
 begin
     p_vga : process(clk_i, reset_i)
@@ -62,46 +62,46 @@ begin
             s_v_pulse   <= '0';
             s_h_pulse   <= '0';
 
-        elsif clk_i'event and clk_i = '1' then
+        elsif rising_edge(clk_i) then
 
             if pixel_en_i = '1' then
 
-                if s_h_counter < h_time - 1 then
+                if s_h_counter < h_total - 1 then
                     s_h_counter <= s_h_counter + 1;
                 else
                     s_h_counter <= 0;
-                    if s_v_counter < v_time - 1 then
+                    if s_v_counter < v_total - 1 then
                         s_v_counter <= s_v_counter + 1;
                     else
                         s_v_counter <= 0;     
                     end if;
                 end if;
 
-                if (s_h_counter > h_front_porch) and s_h_counter <= (h_front_porch + h_visible_area) then
+                if (s_h_counter >= h_front_porch) and (s_h_counter < h_front_porch + h_visible_area) then -- Sichtbarer Bereich
                     s_rgb <= rgb_i;
                 else
                     s_rgb <= (others => '0');
                 end if;
 
-                if (s_h_counter > h_front_porch + h_visible_area) and (s_h_counter < h_front_porch + h_visible_area + h_pulse) then
+                if (s_h_counter >= h_front_porch + h_visible_area) and (s_h_counter < h_front_porch + h_visible_area + h_pulse) then -- Horizontal Blanking-Periode
                     s_h_pulse <= '1';
                 else
                     s_h_pulse <= '0';
                 end if;
-                if (s_v_counter > v_front_porch + v_visible_area) and (s_v_counter < v_front_porch + v_visible_area + v_pulse) then
+
+                if (s_v_counter >= v_front_porch) and (s_v_counter < v_front_porch + v_visible_area) then -- Sichtbarer Bereich
                     s_v_pulse <= '1';
                 else
                     s_v_pulse <= '0';
                 end if;      
 
             end if;
-            s_rgb <= rgb_i;
         end if;
     end process;
 
-    rgb_o    <= s_rgb;
-    h_sync_o <= s_h_counter;
-    v_sync_o <= s_v_counter;
-    h_pulse_o  <= s_h_pulse;
-    v_pulse_o  <= s_v_pulse;
+    rgb_o     <= s_rgb;
+    h_sync_o  <= s_h_counter;
+    v_sync_o  <= s_v_counter;
+    h_pulse_o <= s_h_pulse;
+    v_pulse_o <= s_v_pulse;
 end rtl;

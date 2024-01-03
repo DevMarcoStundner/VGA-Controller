@@ -55,6 +55,7 @@ architecture rtl of vga_top_sim is
         port(
             clk_i      : in std_logic;
             reset_i    : in std_logic;
+            pixel_en_i : in std_logic;
             swsync_i   : in std_logic_vector(15 downto 0);
             pbsync_i   : in std_logic_vector(3 downto 0);
             rgb_pat1_i : in std_logic_vector(11 downto 0);
@@ -209,6 +210,7 @@ begin
     port map(
             clk_i      => clk_i,
             reset_i    => reset_i,
+            pixel_en_i => s_pixel_en,
             swsync_i   => s_swsync,
             pbsync_i   => s_pbsync,
             rgb_pat1_i => s_rgb_pat1,

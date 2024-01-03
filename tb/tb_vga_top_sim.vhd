@@ -67,15 +67,13 @@ begin
       wait for 5 ms;
       reset_i <= '0';
       wait for 1 ms;
-      sw_i <= "0100000000000000";
+      sw_i <= "0000000000000000";
       wait for 31 ms;
       sw_i <= "0100000000000000";
       wait for 31 ms;  
-      sw_i <= "0100000000000000";
+      sw_i <= "1000000000000000";
       wait for 31 ms;
-      sw_i <= "0100000000000000";  
-      wait for 31 ms;
-      sw_i <= "0100000000000000";  
+      sw_i <= "1100000000000000";  
       wait;
   end process;
    
