@@ -25,15 +25,19 @@ architecture sim of tb_pattern_gen2 is
             clk_i      : in std_logic;
             pixel_en_i : in std_logic;
             reset_i    : in std_logic;
-            pixelX_i   : in unsigned(9 downto 0);
-            pixelY_i   : in unsigned(9 downto 0);
-            rgb_o      : out std_logic_vector(11 downto 0)
+            h_sync_i   : in natural;
+            v_sync_i   : in natural;
+            r_o        : out std_logic_vector(3 downto 0);
+            g_o        : out std_logic_vector(3 downto 0);
+            b_o        : out std_logic_vector(3 downto 0)
             );
     end component;
 
     signal clk_i, reset_i, pixel_en_i  : std_logic := '0';
-    signal pixelX_i, pixelY_i          : unsigned(9 downto 0);
-    signal rgb_o                       : std_logic_vector(11 downto 0);
+    signal r_o, g_o, b_o               : std_logic_vector(3 downto 0);
+    signal h_sync_i, v_sync_i          : natural := 0;
+    signal h_total                     : natural := 800;
+    signal v_total                     : natural := 525;
 
 begin
 
@@ -42,9 +46,11 @@ begin
             clk_i      =>  clk_i,
             reset_i    => reset_i,
             pixel_en_i => pixel_en_i,
-            pixelX_i   => pixelX_i,
-            pixelY_i   => pixelY_i,
-            rgb_o      => rgb_o
+            r_o        => r_o,
+            g_o        => g_o,
+            b_o        => b_o,
+            h_sync_i   => h_sync_i,
+            v_sync_i   => v_sync_i
             );
 
     CLK_p : process                     -- 100 Mhz
@@ -66,25 +72,25 @@ begin
     Enable_p  :  process
     begin
         pixel_en_i <= '1';
-        wait for 0.5 ms;
+        wait for 20 ns;
         pixel_en_i <= '0';
-        wait for 0.5 ms;
+        wait for 20 ns;
     end process;
 
     pixel_p : process
     begin
-        wait for 15 us;
-        pixelY_i <= to_unsigned(150, pixelY_i'length);
-        pixelX_i <= to_unsigned(60, pixelX_i'length);
-        wait for 20 us;
+        if h_sync_i = h_total - 1 then 
+            if v_sync_i = v_total - 1 then 
+                v_sync_i <= 0;
+            else
+                v_sync_i <= v_sync_i + 1;
+            end if;
+            h_sync_i <= 0;
+        else
+            h_sync_i <= h_sync_i + 1;
+        end if;
 
-        pixelY_i <= to_unsigned(340, pixelY_i'length);
-        pixelX_i <= to_unsigned(200, pixelX_i'length);
-        wait for 20 us;
-
-        pixelY_i <= to_unsigned(100, pixelY_i'length);
-        pixelX_i <= to_unsigned(580, pixelX_i'length);
-        wait;
+        wait for 40 ns;
 
     end process;
 
