@@ -22,7 +22,9 @@ entity vga is
         clk_i      : in std_logic;
         reset_i    : in std_logic;
         pixel_en_i : in std_logic;
-        rgb_i      : in std_logic_vector(11 downto 0);
+        r_i        : in std_logic_vector(11 downto 0);
+        g_i        : in std_logic_vector(11 downto 0);
+        b_i        : in std_logic_vector(11 downto 0);
         r_o        : out std_logic_vector(3 downto 0);
         g_o        : out std_logic_vector(3 downto 0);
         b_o        : out std_logic_vector(3 downto 0);
@@ -80,7 +82,9 @@ begin
                 end if;
 
                 if (s_h_counter >= h_front_porch) and (s_h_counter < h_front_porch + h_visible_area) then -- Sichtbarer Bereich
-                    s_rgb <= rgb_i;
+                    s_rgb(11 downto 8) <= r_i;
+                    s_rgb(7 downto 4) <= g_i;
+                    s_rgb(3 downto 0) <= b_i;
                 else
                     s_rgb <= (others => '0');
                 end if;
