@@ -35,8 +35,6 @@ entity source_mul is
         g_mem1_i   : in std_logic_vector(3 downto 0);
         b_mem1_i   : in std_logic_vector(3 downto 0);
 
-        rgb_mem2_i : in std_logic_vector(11 downto 0);
-
         r_mem2_i   : in std_logic_vector(3 downto 0);
         g_mem2_i   : in std_logic_vector(3 downto 0);
         b_mem2_i   : in std_logic_vector(3 downto 0);

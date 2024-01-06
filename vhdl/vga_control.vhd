@@ -23,7 +23,9 @@ entity vga is
         reset_i    : in std_logic;
         pixel_en_i : in std_logic;
         rgb_i      : in std_logic_vector(11 downto 0);
-        rgb_o      : out std_logic_vector(11 downto 0);
+        r_o        : out std_logic_vector(3 downto 0);
+        g_o        : out std_logic_vector(3 downto 0);
+        b_o        : out std_logic_vector(3 downto 0);
         v_pulse_o  : out std_logic;
         h_pulse_o  : out std_logic;
         v_sync_o   : out natural;
@@ -99,7 +101,9 @@ begin
         end if;
     end process;
 
-    rgb_o     <= s_rgb;
+    r_o <= s_rgb(11 downto 8);
+    g_o <= s_rgb(7 downto 4);
+    b_o <= s_rgb(3 downto 0);
     h_sync_o  <= s_h_counter;
     v_sync_o  <= s_v_counter;
     h_pulse_o <= s_h_pulse;

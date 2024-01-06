@@ -21,7 +21,9 @@ entity vga_top is
         reset_i   : in std_logic;
         sw_i      : in std_logic_vector(15 downto 0);
         pb_i      : in std_logic_vector(3 downto 0);
-        rgb_o     : out std_logic_vector(11 downto 0);
+        r_o       : out std_logic_vector(3 downto 0);
+        g_o       : out std_logic_vector(3 downto 0);
+        b_o       : out std_logic_vector(3 downto 0);
         h_pulse_o : out std_logic;
         v_pulse_o : out std_logic
     );
@@ -35,7 +37,9 @@ architecture rtl of vga_top is
             reset_i    : in std_logic;
             pixel_en_i : in std_logic;
             rgb_i      : in std_logic_vector(11 downto 0);
-            rgb_o      : out std_logic_vector(11 downto 0);
+            r_o        : out std_logic_vector(3 downto 0);
+            g_o        : out std_logic_vector(3 downto 0);
+            b_o        : out std_logic_vector(3 downto 0);
             v_pulse_o  : out std_logic;
             h_pulse_o  : out std_logic;
             v_sync_o   : out natural;
@@ -46,19 +50,36 @@ architecture rtl of vga_top is
     component source_mul
         port(
             clk_i      : in std_logic;
-            reset_i    : in std_logic;
-            pixel_en_i : in std_logic;
-            swsync_i   : in std_logic_vector(15 downto 0);
-            pbsync_i   : in std_logic_vector(3 downto 0);
-            rgb_pat1_i : in std_logic_vector(11 downto 0);
-            rgb_pat2_i : in std_logic_vector(11 downto 0);
-            rgb_mem1_i : in std_logic_vector(11 downto 0);
-            rgb_mem2_i : in std_logic_vector(11 downto 0);
-            h_sync_i   : in natural;
-            v_sync_i   : in natural;
-            rgb_o      : out std_logic_vector(11 downto 0);
-            x_o        : out natural;
-            y_o        : out natural
+        reset_i    : in std_logic;
+        pixel_en_i : in std_logic;
+        swsync_i   : in std_logic_vector(15 downto 0);
+        pbsync_i   : in std_logic_vector(3 downto 0);
+
+        r_pat1_i   : in std_logic_vector(3 downto 0);
+        g_pat1_i   : in std_logic_vector(3 downto 0);
+        b_pat1_i   : in std_logic_vector(3 downto 0);
+
+        r_pat2_i   : in std_logic_vector(3 downto 0);
+        g_pat2_i   : in std_logic_vector(3 downto 0);
+        b_pat2_i   : in std_logic_vector(3 downto 0);
+
+        r_mem1_i   : in std_logic_vector(3 downto 0);
+        g_mem1_i   : in std_logic_vector(3 downto 0);
+        b_mem1_i   : in std_logic_vector(3 downto 0);
+
+        rgb_mem2_i : in std_logic_vector(11 downto 0);
+
+        r_mem2_i   : in std_logic_vector(3 downto 0);
+        g_mem2_i   : in std_logic_vector(3 downto 0);
+        b_mem2_i   : in std_logic_vector(3 downto 0);
+
+        h_sync_i   : in natural;
+        v_sync_i   : in natural;
+        r_o        : out std_logic_vector(3 downto 0);
+        g_o        : out std_logic_vector(3 downto 0);
+        b_o        : out std_logic_vector(3 downto 0);
+        x_o        : out natural;
+        y_o        : out natural
         );
     end component;
 
@@ -117,7 +138,9 @@ architecture rtl of vga_top is
             h_sync_i   : in natural;
             v_sync_i   : in natural;
             rom_addr_o : out std_logic_vector(16 downto 0);
-            rgb_o      : out std_logic_vector(11 downto 0)
+            r_o        : out std_logic_vector(3 downto 0);
+            g_o        : out std_logic_vector(3 downto 0);
+            b_o        : out std_logic_vector(3 downto 0)
         );
     end component;
 
@@ -132,7 +155,9 @@ architecture rtl of vga_top is
             x_i        : in natural;
             y_i        : in natural;
             rom_addr_o : out std_logic_vector(13 downto 0);
-            rgb_o      : out std_logic_vector(11 downto 0)
+            r_o        : out std_logic_vector(3 downto 0);
+            g_o        : out std_logic_vector(3 downto 0);
+            b_o        : out std_logic_vector(3 downto 0)
         );
     end component;
 
@@ -159,10 +184,22 @@ architecture rtl of vga_top is
     signal s_v_sync        : natural;
     signal s_h_sync        : natural;
 
-    signal s_rgb_pat1      : std_logic_vector(11 downto 0);
-    signal s_rgb_pat2      : std_logic_vector(11 downto 0);
-    signal s_rgb_mem1      : std_logic_vector(11 downto 0);
-    signal s_rgb_mem2      : std_logic_vector(11 downto 0);
+    signal s_r_pat1_i        : std_logic_vector(3 downto 0);
+    signal s_g_pat1_i        : std_logic_vector(3 downto 0);
+    signal s_b_pat1_i        : std_logic_vector(3 downto 0);
+
+    signal s_r_pat2_i        : std_logic_vector(3 downto 0);
+    signal s_g_pat2_i        : std_logic_vector(3 downto 0);
+    signal s_b_pat2_i        : std_logic_vector(3 downto 0);
+
+    signal s_r_mem1_i        : std_logic_vector(3 downto 0);
+    signal s_g_mem1_i        : std_logic_vector(3 downto 0);
+    signal s_b_mem1_i        : std_logic_vector(3 downto 0);
+
+    signal s_r_mem2_i       : std_logic_vector(3 downto 0);
+    signal s_g_mem2_i       : std_logic_vector(3 downto 0);
+    signal s_b_mem2_i       : std_logic_vector(3 downto 0);
+
     signal s_rgb_i         : std_logic_vector(11 downto 0);
 
     signal s_x             : natural;
@@ -181,7 +218,9 @@ begin
             reset_i    => reset_i,
             pixel_en_i => s_pixel_en,
             rgb_i      => s_rgb_i,
-            rgb_o      => rgb_o,
+            r_o        => r_o,
+            g_o        => g_o,
+            b_o        => b_o,
             v_pulse_o  => v_pulse_o,
             h_pulse_o  => h_pulse_o,
             v_sync_o   => s_v_sync,
@@ -195,13 +234,23 @@ begin
             pixel_en_i => s_pixel_en,
             swsync_i   => s_swsync,
             pbsync_i   => s_pbsync,
-            rgb_pat1_i => s_rgb_pat1,
-            rgb_pat2_i => s_rgb_pat2,
-            rgb_mem1_i => s_rgb_mem1,
-            rgb_mem2_i => s_rgb_mem2,
+            r_pat1_i   => s_r_pat1,
+            g_pat1_i   => s_g_pat1,
+            b_pat1_i   => s_b_pat1,
+            r_pat2_i   => s_r_pat2,
+            g_pat2_i   => s_g_pat2,
+            b_pat2_i   => s_b_pat2,
+            r_mem1_i   => s_r_mem1,
+            g_mem1_i   => s_g_mem1,
+            b_mem1_i   => s_b_mem1,
+            r_mem2_i   => s_r_mem2,
+            g_mem2_i   => s_g_mem2,
+            b_mem2_i   => s_b_mem2,
             h_sync_i   => s_h_sync,
             v_sync_i   => s_v_sync,
-            rgb_o      => rgb_o,
+            r_o        => r_o,
+            g_o        => g_o,
+            b_o        => b_o,
             x_o        => s_x,
             y_o        => s_y
     );
@@ -218,8 +267,10 @@ begin
             clk_i      => clk_i,
             reset_i    => reset_i,
             pixel_en_i => s_pixel_en,
-            pixelX_i   => s_h_sync,
-            rgb_o      => rgb_o
+            h_sync_i   => s_h_sync,
+            r_o        => r_o,
+            g_o        => g_o,
+            b_o        => b_o
     );
 
     i_patter_gen2 : pattern_gen2
@@ -227,9 +278,11 @@ begin
             clk_i      => clk_i,
             reset_i    => reset_i,
             pixel_en_i => s_pixel_en,
-            pixelX_i   => s_h_sync,
-            pixelY_i   => s_v_sync,
-            rgb_o      => rgb_o
+            h_sync_i   => s_h_sync,
+            v_sync_i   => s_v_sync,
+            r_o        => r_o,
+            g_o        => g_o,
+            b_o        => b_o
     );
 
     i_io_logic : io_logic
@@ -252,7 +305,9 @@ begin
             h_sync_i   => s_h_sync,
             v_sync_i   => s_v_sync,
             rom_addr_o => s_rom_addr_1,
-            rgb_o      => rgb_o
+            r_o        => r_o,
+            g_o        => g_o,
+            b_o        => b_o
     );
 
     i_mem_control2 : mem_control2
@@ -266,7 +321,9 @@ begin
             x_i        => s_x,
             y_i        => s_y,
             rom_addr_o => s_rom_addr_2,
-            rgb_o      => rgb_o
+            r_o        => r_o,
+            g_o        => g_o,
+            b_o        => b_o
     );
 
     i_memory_pic : memory_pic
