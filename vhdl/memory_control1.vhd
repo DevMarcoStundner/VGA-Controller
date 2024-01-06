@@ -26,7 +26,9 @@ entity mem_control1 is
         h_sync_i   : in natural;
         v_sync_i   : in natural;
         rom_addr_o : out std_logic_vector(16 downto 0);
-        rgb_o      : out std_logic_vector(11 downto 0)
+        r_o        : out std_logic_vector(3 downto 0);
+        g_o        : out std_logic_vector(3 downto 0);
+        b_o        : out std_logic_vector(3 downto 0)
         );
 end mem_control1;
 
@@ -84,6 +86,8 @@ begin
     end process;
 
     rom_addr_o <= s_rom_addr;
-    rgb_o <= s_rgb;
+    r_o        <= s_rgb(11 downto 8);
+    g_o        <= s_rgb(7 downto 4);
+    b_o        <= s_rgb(3 downto 0);
 end rtl;
             

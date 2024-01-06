@@ -22,13 +22,30 @@ entity source_mul is
         pixel_en_i : in std_logic;
         swsync_i   : in std_logic_vector(15 downto 0);
         pbsync_i   : in std_logic_vector(3 downto 0);
-        rgb_pat1_i : in std_logic_vector(11 downto 0);
-        rgb_pat2_i : in std_logic_vector(11 downto 0);
-        rgb_mem1_i : in std_logic_vector(11 downto 0);
+
+        r_pat1_i   : in std_logic_vector(3 downto 0);
+        g_pat1_i   : in std_logic_vector(3 downto 0);
+        b_pat1_i   : in std_logic_vector(3 downto 0);
+
+        r_pat2_i   : in std_logic_vector(3 downto 0);
+        g_pat2_i   : in std_logic_vector(3 downto 0);
+        b_pat2_i   : in std_logic_vector(3 downto 0);
+
+        r_mem1_i   : in std_logic_vector(3 downto 0);
+        g_mem1_i   : in std_logic_vector(3 downto 0);
+        b_mem1_i   : in std_logic_vector(3 downto 0);
+
         rgb_mem2_i : in std_logic_vector(11 downto 0);
+
+        r_mem2_i   : in std_logic_vector(3 downto 0);
+        g_mem2_i   : in std_logic_vector(3 downto 0);
+        b_mem2_i   : in std_logic_vector(3 downto 0);
+
         h_sync_i   : in natural;
         v_sync_i   : in natural;
-        rgb_o      : out std_logic_vector(11 downto 0);
+        r_o        : out std_logic_vector(3 downto 0);
+        g_o        : out std_logic_vector(3 downto 0);
+        b_o        : out std_logic_vector(3 downto 0);
         x_o        : out natural;
         y_o        : out natural
     );
@@ -114,20 +131,28 @@ begin
                         if swsync_i(2) = '1' then
                             if h_sync_i >= v_x and h_sync_i < (v_x + pic_size) then
                                 if v_sync_i >= v_y and v_sync_i < (v_y + pic_size) then
-                                    s_rgb <= rgb_mem2_i;
+                                    s_rgb(11 downto 8) <=  r_mem2_i;
+                                    s_rgb(7 downto 4)  <=  g_mem2_i;
+                                    s_rgb(3 downto 0)  <=  b_mem2_i;
 
                                 else
-                                    s_rgb <= rgb_mem1_i;
+                                    s_rgb(11 downto 8) <=  r_mem1_i;
+                                    s_rgb(7 downto 4)  <=  g_mem1_i;
+                                    s_rgb(3 downto 0)  <=  b_mem1_i;
                                 
                                 end if;
                             else
-                                s_rgb <= rgb_mem1_i;
+                                s_rgb(11 downto 8) <=  r_mem1_i;
+                                s_rgb(7 downto 4)  <=  g_mem1_i;
+                                s_rgb(3 downto 0)  <=  b_mem1_i;
 
                             end if;
                         else
                             v_x      := 100;
                             v_y      := 100;
-                            s_rgb    <= rgb_mem1_i;
+                            s_rgb(11 downto 8) <=  r_mem1_i;
+                            s_rgb(7 downto 4)  <=  g_mem1_i;
+                            s_rgb(3 downto 0)  <=  b_mem1_i;
 
                         end if;
 
@@ -135,20 +160,28 @@ begin
                         if swsync_i(2) = '1' then
                             if h_sync_i >= v_x and h_sync_i < (v_x + pic_size) then
                                 if v_sync_i >= v_y and v_sync_i < (v_y + pic_size) then
-                                    s_rgb <= rgb_mem2_i;
+                                    s_rgb(11 downto 8) <=  r_mem2_i;
+                                    s_rgb(7 downto 4)  <=  g_mem2_i;
+                                    s_rgb(3 downto 0)  <=  b_mem2_i;
 
                                 else
-                                    s_rgb <=  rgb_pat1_i;
+                                    s_rgb(11 downto 8) <=  r_pat1_i;
+                                    s_rgb(7 downto 4)  <=  g_pat1_i;
+                                    s_rgb(3 downto 0)  <=  b_pat1_i;
 
                                 end if;
                             else
-                                s_rgb <=  rgb_pat1_i;
+                                s_rgb(11 downto 8) <=  r_pat1_i;
+                                s_rgb(7 downto 4)  <=  g_pat1_i;
+                                s_rgb(3 downto 0)  <=  b_pat1_i;
                             
                             end if;
                         else
                             v_x      := 100;
                             v_y      := 100;
-                            s_rgb    <= rgb_pat1_i;
+                            s_rgb(11 downto 8) <=  r_pat1_i;
+                            s_rgb(7 downto 4)  <=  g_pat1_i;
+                            s_rgb(3 downto 0)  <=  b_pat1_i;
                         
                         end if;
 
@@ -156,20 +189,28 @@ begin
                         if swsync_i(2) = '1' then
                             if h_sync_i >= v_x and h_sync_i < (v_x + pic_size) then
                                 if v_sync_i >= v_y and v_sync_i < (v_y + pic_size) then
-                                    s_rgb <= rgb_mem2_i;
+                                    s_rgb(11 downto 8) <=  r_mem2_i;
+                                    s_rgb(7 downto 4)  <=  g_mem2_i;
+                                    s_rgb(3 downto 0)  <=  b_mem2_i;
                                 
                                 else 
-                                    s_rgb <= rgb_pat2_i;
+                                    s_rgb(11 downto 8) <=  r_pat2_i;
+                                    s_rgb(7 downto 4)  <=  g_pat2_i;
+                                    s_rgb(3 downto 0)  <=  b_pat2_i;
                                 
                                 end if;
                             else
-                                s_rgb <= rgb_pat2_i;
+                                s_rgb(11 downto 8) <=  r_pat2_i;
+                                s_rgb(7 downto 4)  <=  g_pat2_i;
+                                s_rgb(3 downto 0)  <=  b_pat2_i;
 
                             end if;
                         else
                             v_x      := 100;
                             v_y      := 100;
-                            s_rgb    <= rgb_pat2_i;
+                            s_rgb(11 downto 8) <=  r_pat2_i;
+                            s_rgb(7 downto 4)  <=  g_pat2_i;
+                            s_rgb(3 downto 0)  <=  b_pat2_i;
                         
                         end if;
                     end case;
@@ -180,7 +221,9 @@ begin
         end if;
     end process;
 
-    rgb_o <= s_rgb;
+    r_o <= s_rgb(11 downto 8);
+    g_o <= s_rgb(7 downto 4);
+    b_o <= s_rgb(3 downto 0);
     x_o   <= s_x;
     y_o   <= s_y;
 end rtl;

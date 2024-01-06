@@ -76,8 +76,10 @@ architecture rtl of vga_top is
             clk_i      : in std_logic;
             pixel_en_i : in std_logic;
             reset_i    : in std_logic;
-            pixelX_i   : in natural;
-            rgb_o      : out std_logic_vector(11 downto 0)
+            h_sync_i   : in natural;
+            r_o        : out std_logic_vector(3 downto 0);
+            g_o        : out std_logic_vector(3 downto 0);
+            b_o        : out std_logic_vector(3 downto 0)
         );
     end component;
 
@@ -86,9 +88,11 @@ architecture rtl of vga_top is
             clk_i      : in std_logic;
             pixel_en_i : in std_logic;
             reset_i    : in std_logic;
-            pixelX_i   : in natural;
-            pixelY_i   : in natural;
-            rgb_o      : out std_logic_vector(11 downto 0)
+            h_sync_i   : in natural;
+            v_sync_i   : in natural;
+            r_o        : out std_logic_vector(3 downto 0);
+            g_o        : out std_logic_vector(3 downto 0);
+            b_o        : out std_logic_vector(3 downto 0)
         );
     end component;
 
