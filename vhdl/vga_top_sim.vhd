@@ -300,7 +300,7 @@ begin
             b_o        => s_b_pat1
     );
 
-    i_patter_gen2 : pattern_gen2
+    i_pattern_gen2 : pattern_gen2
     port map(
             clk_i      => clk_i,
             reset_i    => reset_i,

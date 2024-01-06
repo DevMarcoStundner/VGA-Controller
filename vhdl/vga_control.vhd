@@ -22,9 +22,9 @@ entity vga is
         clk_i      : in std_logic;
         reset_i    : in std_logic;
         pixel_en_i : in std_logic;
-        r_i        : in std_logic_vector(11 downto 0);
-        g_i        : in std_logic_vector(11 downto 0);
-        b_i        : in std_logic_vector(11 downto 0);
+        r_i        : in std_logic_vector(3 downto 0);
+        g_i        : in std_logic_vector(3 downto 0);
+        b_i        : in std_logic_vector(3 downto 0);
         r_o        : out std_logic_vector(3 downto 0);
         g_o        : out std_logic_vector(3 downto 0);
         b_o        : out std_logic_vector(3 downto 0);
@@ -40,6 +40,8 @@ architecture rtl of vga is
     signal s_v_pulse   : std_logic;
     signal s_h_pulse   : std_logic;
     signal s_rgb       : std_logic_vector(11 downto 0);
+    signal s_h_counter : natural;
+    signal s_v_counter : natural;
 
     constant h_visible_area     : natural := 640;
     constant v_visible_area     : natural := 480;
@@ -53,9 +55,6 @@ architecture rtl of vga is
     constant h_total            : natural := h_visible_area + h_pulse + h_front_porch + h_back_porch;
     constant v_total            : natural := v_visible_area + v_pulse + v_front_porch + v_back_porch; 
 
-    signal s_h_counter : natural range 0 to (h_total - 1);
-    signal s_v_counter : natural range 0 to (v_total - 1);
-
 begin
     p_vga : process(clk_i, reset_i)
     begin
@@ -66,22 +65,22 @@ begin
             s_v_pulse   <= '0';
             s_h_pulse   <= '0';
 
-        elsif rising_edge(clk_i) then
+        elsif clk_i'event and clk_i = '1' then
 
             if pixel_en_i = '1' then
 
-                if s_h_counter < h_total - 1 then
+                if s_h_counter < (h_total - 1) then
                     s_h_counter <= s_h_counter + 1;
                 else
                     s_h_counter <= 0;
-                    if s_v_counter < v_total - 1 then
+                    if s_v_counter < (v_total - 1) then
                         s_v_counter <= s_v_counter + 1;
                     else
                         s_v_counter <= 0;     
                     end if;
                 end if;
 
-                if (s_h_counter >= h_front_porch) and (s_h_counter < h_front_porch + h_visible_area) then -- Sichtbarer Bereich
+                if (s_h_counter > h_front_porch) and (s_h_counter <= h_visible_area) then 
                     s_rgb(11 downto 8) <= r_i;
                     s_rgb(7 downto 4) <= g_i;
                     s_rgb(3 downto 0) <= b_i;
@@ -89,18 +88,17 @@ begin
                     s_rgb <= (others => '0');
                 end if;
 
-                if (s_h_counter >= h_front_porch + h_visible_area) and (s_h_counter < h_front_porch + h_visible_area + h_pulse) then -- Horizontal Blanking-Periode
+                if (s_h_counter >= h_front_porch + h_visible_area) and (s_h_counter < h_front_porch + h_visible_area + h_pulse) then 
                     s_h_pulse <= '1';
                 else
                     s_h_pulse <= '0';
                 end if;
 
-                if (s_v_counter >= v_front_porch) and (s_v_counter < v_front_porch + v_visible_area) then -- Sichtbarer Bereich
+                if (s_v_counter >= v_front_porch + v_visible_area) and (s_v_counter < v_front_porch + v_visible_area + v_pulse) then 
                     s_v_pulse <= '1';
                 else
                     s_v_pulse <= '0';
-                end if;      
-
+                end if;    
             end if;
         end if;
     end process;

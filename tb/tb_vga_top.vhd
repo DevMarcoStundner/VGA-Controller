@@ -26,14 +26,16 @@ architecture sim of tb_vga_top is
             reset_i   : in std_logic;
             sw_i      : in std_logic_vector(15 downto 0);
             pb_i      : in std_logic_vector(3 downto 0);
-            rgb_o     : out std_logic_vector(11 downto 0);
+            r_o       : out std_logic_vector(3 downto 0);
+            g_o       : out std_logic_vector(3 downto 0);
+            b_o       : out std_logic_vector(3 downto 0);
             h_pulse_o : out std_logic;
             v_pulse_o : out std_logic
         );
     end component;
 
     signal clk_i, reset_i       : std_logic := '0';
-    signal rgb_o 				: std_logic_vector(11 downto 0) := (others => '0');
+    signal r_o, g_o, b_o     	: std_logic_vector(3 downto 0) := (others => '0');
 	signal v_pulse_o, h_pulse_o : std_logic := '0';
     signal sw_i                 : std_logic_vector(15 downto 0):= (others => '0');
     signal pb_i                 : std_logic_vector(3 downto 0):= (others => '0');
@@ -46,7 +48,9 @@ begin
             reset_i => reset_i,
             sw_i => sw_i,
             pb_i => pb_i,
-            rgb_o => rgb_o,
+            r_o  => r_o,
+            g_o  => g_o,
+            b_o  => b_o,
             h_pulse_o => h_pulse_o,
             v_pulse_o => v_pulse_o
             );

@@ -34,7 +34,7 @@ architecture rtl of pattern_gen1 is
     constant red                : std_logic_vector(11 downto 0) := "111100000000";
     constant green              : std_logic_vector(11 downto 0) := "000011110000";
     constant blue               : std_logic_vector(11 downto 0) := "000000001111";
-    constant black              : std_logic_vector(11 downto 0) := "111111111111";
+    constant black              : std_logic_vector(11 downto 0) := "000000000000";
     constant h_visible_area     : natural := 640;
 
 begin
@@ -51,7 +51,6 @@ begin
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
                 if h_sync_i > 0 and h_sync_i <= h_visible_area then
-                    
                     case count is
                         when 0 to 39 | 160 to 199 | 320 to 359 | 480 to 519 =>
                             s_rgb <= red;
