@@ -50,36 +50,34 @@ architecture rtl of vga_top is
     component source_mul
         port(
             clk_i      : in std_logic;
-        reset_i    : in std_logic;
-        pixel_en_i : in std_logic;
-        swsync_i   : in std_logic_vector(15 downto 0);
-        pbsync_i   : in std_logic_vector(3 downto 0);
+            reset_i    : in std_logic;
+            pixel_en_i : in std_logic;
+            swsync_i   : in std_logic_vector(15 downto 0);
+            pbsync_i   : in std_logic_vector(3 downto 0);
 
-        r_pat1_i   : in std_logic_vector(3 downto 0);
-        g_pat1_i   : in std_logic_vector(3 downto 0);
-        b_pat1_i   : in std_logic_vector(3 downto 0);
+            r_pat1_i   : in std_logic_vector(3 downto 0);
+            g_pat1_i   : in std_logic_vector(3 downto 0);
+            b_pat1_i   : in std_logic_vector(3 downto 0);
 
-        r_pat2_i   : in std_logic_vector(3 downto 0);
-        g_pat2_i   : in std_logic_vector(3 downto 0);
-        b_pat2_i   : in std_logic_vector(3 downto 0);
+            r_pat2_i   : in std_logic_vector(3 downto 0);
+            g_pat2_i   : in std_logic_vector(3 downto 0);
+            b_pat2_i   : in std_logic_vector(3 downto 0);
 
-        r_mem1_i   : in std_logic_vector(3 downto 0);
-        g_mem1_i   : in std_logic_vector(3 downto 0);
-        b_mem1_i   : in std_logic_vector(3 downto 0);
+            r_mem1_i   : in std_logic_vector(3 downto 0);
+            g_mem1_i   : in std_logic_vector(3 downto 0);
+            b_mem1_i   : in std_logic_vector(3 downto 0);
 
-        rgb_mem2_i : in std_logic_vector(11 downto 0);
+            r_mem2_i   : in std_logic_vector(3 downto 0);
+            g_mem2_i   : in std_logic_vector(3 downto 0);
+            b_mem2_i   : in std_logic_vector(3 downto 0);
 
-        r_mem2_i   : in std_logic_vector(3 downto 0);
-        g_mem2_i   : in std_logic_vector(3 downto 0);
-        b_mem2_i   : in std_logic_vector(3 downto 0);
-
-        h_sync_i   : in natural;
-        v_sync_i   : in natural;
-        r_o        : out std_logic_vector(3 downto 0);
-        g_o        : out std_logic_vector(3 downto 0);
-        b_o        : out std_logic_vector(3 downto 0);
-        x_o        : out natural;
-        y_o        : out natural
+            h_sync_i   : in natural;
+            v_sync_i   : in natural;
+            r_o        : out std_logic_vector(3 downto 0);
+            g_o        : out std_logic_vector(3 downto 0);
+            b_o        : out std_logic_vector(3 downto 0);
+            x_o        : out natural;
+            y_o        : out natural
         );
     end component;
 
@@ -184,21 +182,21 @@ architecture rtl of vga_top is
     signal s_v_sync        : natural;
     signal s_h_sync        : natural;
 
-    signal s_r_pat1_i        : std_logic_vector(3 downto 0);
-    signal s_g_pat1_i        : std_logic_vector(3 downto 0);
-    signal s_b_pat1_i        : std_logic_vector(3 downto 0);
+    signal s_r_pat1        : std_logic_vector(3 downto 0);
+    signal s_g_pat1        : std_logic_vector(3 downto 0);
+    signal s_b_pat1        : std_logic_vector(3 downto 0);
 
-    signal s_r_pat2_i        : std_logic_vector(3 downto 0);
-    signal s_g_pat2_i        : std_logic_vector(3 downto 0);
-    signal s_b_pat2_i        : std_logic_vector(3 downto 0);
+    signal s_r_pat2        : std_logic_vector(3 downto 0);
+    signal s_g_pat2        : std_logic_vector(3 downto 0);
+    signal s_b_pat2        : std_logic_vector(3 downto 0);
 
-    signal s_r_mem1_i        : std_logic_vector(3 downto 0);
-    signal s_g_mem1_i        : std_logic_vector(3 downto 0);
-    signal s_b_mem1_i        : std_logic_vector(3 downto 0);
+    signal s_r_mem1        : std_logic_vector(3 downto 0);
+    signal s_g_mem1        : std_logic_vector(3 downto 0);
+    signal s_b_mem1        : std_logic_vector(3 downto 0);
 
-    signal s_r_mem2_i       : std_logic_vector(3 downto 0);
-    signal s_g_mem2_i       : std_logic_vector(3 downto 0);
-    signal s_b_mem2_i       : std_logic_vector(3 downto 0);
+    signal s_r_mem2        : std_logic_vector(3 downto 0);
+    signal s_g_mem2        : std_logic_vector(3 downto 0);
+    signal s_b_mem2        : std_logic_vector(3 downto 0);
 
     signal s_rgb_i         : std_logic_vector(11 downto 0);
 
