@@ -27,7 +27,7 @@ architecture sim of tb_vga_control is
 			reset_i    : in std_logic;
 			pixel_en_i : in std_logic;
 			rgb_i      : in std_logic_vector(11 downto 0);
-      rgb_o      : out std_logic_vector(11 downto 0);
+            rgb_o      : out std_logic_vector(11 downto 0);
 			v_pulse_o  : out std_logic;
 			h_pulse_o  : out std_logic;
 			v_sync_o   : out integer;
@@ -36,8 +36,8 @@ architecture sim of tb_vga_control is
 	end component;
 
 	signal clk_i, reset_i, pixel_en_i, v_pulse_o, h_pulse_o   : std_logic := '0';
-	signal rgb_i, rgb_o 																			: std_logic_vector(11 downto 0);
-	signal v_sync_o, h_sync_o 																: integer := 0;
+	signal rgb_i, rgb_o 									  : std_logic_vector(11 downto 0);
+	signal v_sync_o, h_sync_o 							      : integer := 0;
 
 begin
 

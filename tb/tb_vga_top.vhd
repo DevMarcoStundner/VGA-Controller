@@ -76,13 +76,7 @@ begin
         wait for 15 us;
         sw_i <= (others => '0');
         wait for 10 ms;
-        sw_i <= "1010000000000000";
-        wait for 10 ms;
-        pb_i <= "0001";
-        wait for 10 ms;
-        sw_i <= (others => '0');
-        wait for 10 ms;
-        sw_i <= "0010000000000000";
+        sw_i <= "0100000000000000";
         wait;
     end process;
 
