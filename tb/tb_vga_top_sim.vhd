@@ -66,11 +66,11 @@ begin
       wait for 5 ms;
       reset_i <= '0';
       wait for 1 ms;
-      sw_i <= "0000000000000000";
-      wait for 33 ms;
-     -- sw_i <= "0000000000000001";
-     -- wait for 33 ms;  
-    --  sw_i <= "0000000000000010";
+      sw_i <= "0000000000000010"; -- pat 2
+      wait for 31 ms;
+     -- sw_i <= "0000000000000001"; -- mem1
+      --wait for 31 ms;  
+    --  sw_i <= "0000000000000000"; -- pat 1
      -- wait for 31 ms;
       wait;
   end process;

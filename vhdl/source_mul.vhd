@@ -83,6 +83,8 @@ begin
                 elsif swsync_i(0) = '0' and swsync_i(0) = '0' then      -- Pat 1
                     s_states <= PAT1;
 
+                end if;
+
                 if pbsync_i = "1000" then
                     if s_x >= 40 then
                         s_x <=  s_x - 10;
@@ -209,7 +211,6 @@ begin
                         
                         end if;
                     end case;
-                end if;
             end if;
         end if;
     end process;

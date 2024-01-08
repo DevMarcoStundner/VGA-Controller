@@ -37,7 +37,7 @@ architecture rtl of pattern_gen1 is
     constant black              : std_logic_vector(11 downto 0) := "000000000000";
     constant h_visible_area     : natural := 640;
     constant h_front_porch      : natural := 16;
-    constant h_pulse            : natural := 96;
+
 
 begin
 
@@ -49,7 +49,8 @@ begin
 
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
-                if h_sync_i > 0 and h_sync_i <= h_visible_area then
+                if h_sync_i >= h_front_porch and h_sync_i <= h_visible_area then
+                    
                     case h_sync_i is
                         when 0 to 39 | 160 to 199 | 320 to 359 | 480 to 519 =>
                             s_rgb <= red;
@@ -67,7 +68,9 @@ begin
                             s_rgb <= (others => '0');
 
                     end case;     
-                end if;    
+                else
+                    s_rgb <= (others => '0');  
+                end if;  
             end if;
         end if;
     end process p_stripe;

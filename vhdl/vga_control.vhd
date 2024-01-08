@@ -80,7 +80,7 @@ begin
                     end if;
                 end if;
 
-                if (s_h_counter > h_front_porch) and (s_h_counter <= h_visible_area) then 
+                if (s_h_counter >= h_front_porch) and (s_h_counter <= h_visible_area) then 
                     s_rgb(11 downto 8) <= r_i;
                     s_rgb(7 downto 4) <= g_i;
                     s_rgb(3 downto 0) <= b_i;
