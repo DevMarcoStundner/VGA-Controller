@@ -36,26 +36,25 @@ architecture rtl of pattern_gen1 is
     constant blue               : std_logic_vector(11 downto 0) := "000000001111";
     constant black              : std_logic_vector(11 downto 0) := "000000000000";
     constant h_visible_area     : natural := 640;
+    constant h_front_porch      : natural := 16;
+    constant h_pulse            : natural := 96;
 
 begin
 
     p_stripe : process(clk_i, reset_i)
 
-    variable count : natural;
-
     begin
         if reset_i = '1' then
            s_rgb   <= (others => '0');
-           count := 0;
 
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
                 if h_sync_i > 0 and h_sync_i <= h_visible_area then
-                    case count is
+                    case h_sync_i is
                         when 0 to 39 | 160 to 199 | 320 to 359 | 480 to 519 =>
                             s_rgb <= red;
 
-                         when 40 to 79 | 200 to 239 | 360 to 399 | 520 to 559 =>
+                        when 40 to 79 | 200 to 239 | 360 to 399 | 520 to 559 =>
                             s_rgb <= green;
 
                         when 80 to 119 | 240 to 279 | 400 to 439 | 560 to 599 =>
@@ -67,11 +66,7 @@ begin
                         when others =>
                             s_rgb <= (others => '0');
 
-                    end case;        
-                count := count + 1;   
-                if count = 640 then
-                    count := 0;   
-                end if;  
+                    end case;     
                 end if;    
             end if;
         end if;

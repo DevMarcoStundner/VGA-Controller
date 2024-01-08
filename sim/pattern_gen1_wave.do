@@ -4,7 +4,6 @@ add wave -noupdate -format Logic /tb_pattern_gen1/clk_i
 add wave -noupdate -format Logic /tb_pattern_gen1/pixel_en_i
 add wave -noupdate -format Logic /tb_pattern_gen1/reset_i
 add wave -noupdate -format Logic /tb_pattern_gen1/h_sync_i
-add wave -noupdate -format Logic /tb_pattern_gen1/count
 add wave -noupdate -format Logic /tb_pattern_gen1/r_o
 add wave -noupdate -format Logic /tb_pattern_gen1/g_o
 add wave -noupdate -format Logic /tb_pattern_gen1/b_o
