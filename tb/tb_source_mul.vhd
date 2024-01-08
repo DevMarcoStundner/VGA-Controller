@@ -24,21 +24,45 @@ architecture sim of tb_source_mul is
         port(
             clk_i      : in std_logic;
             reset_i    : in std_logic;
+            pixel_en_i : in std_logic;
             swsync_i   : in std_logic_vector(15 downto 0);
             pbsync_i   : in std_logic_vector(3 downto 0);
-            rgb_pat1_i : in std_logic_vector(11 downto 0);
-            rgb_pat2_i : in std_logic_vector(11 downto 0);
-            rgb_mem1_i : in std_logic_vector(11 downto 0);
-            rgb_mem2_i : in std_logic_vector(11 downto 0);
-            rgb_o      : out std_logic_vector(11 downto 0)
+
+            r_pat1_i   : in std_logic_vector(3 downto 0);
+            g_pat1_i   : in std_logic_vector(3 downto 0);
+            b_pat1_i   : in std_logic_vector(3 downto 0);
+
+            r_pat2_i   : in std_logic_vector(3 downto 0);
+            g_pat2_i   : in std_logic_vector(3 downto 0);
+            b_pat2_i   : in std_logic_vector(3 downto 0);
+
+            r_mem1_i   : in std_logic_vector(3 downto 0);
+            g_mem1_i   : in std_logic_vector(3 downto 0);
+            b_mem1_i   : in std_logic_vector(3 downto 0);
+
+            r_mem2_i   : in std_logic_vector(3 downto 0);
+            g_mem2_i   : in std_logic_vector(3 downto 0);
+            b_mem2_i   : in std_logic_vector(3 downto 0);
+
+            h_sync_i   : in natural;
+            v_sync_i   : in natural;
+            r_o        : out std_logic_vector(3 downto 0);
+            g_o        : out std_logic_vector(3 downto 0);
+            b_o        : out std_logic_vector(3 downto 0);
+            x_o        : out natural;
+            y_o        : out natural
             );
     end component;
 
-    signal clk_i, reset_i                                 : std_logic := '0';
+    signal clk_i, reset_i, pixel_en_i                     : std_logic := '0';
     signal swsync_i                                       : std_logic_vector(15 downto 0);
     signal pbsync_i                                       : std_logic_vector(3 downto 0);
-    signal rgb_pat1_i, rgb_pat2_i, rgb_mem1_i, rgb_mem2_i : std_logic_vector(11 downto 0);
-    signal rgb_o                                          : std_logic_vector(11 downto 0);
+    signal r_pat1_i, g_pat1_i, b_pat1_i                   : std_logic_vector(3 downto 0) := "1111";
+    signal r_pat2_i, g_pat2_i, b_pat2_i                   : std_logic_vector(3 downto 0) := "0000";
+    signal r_mem1_i, g_mem1_i, b_mem1_i                   : std_logic_vector(3 downto 0) := "0101";
+    signal r_mem2_i, g_mem2_i, b_mem2_i                   : std_logic_vector(3 downto 0) := "1010";
+    signal r_o, g_o, b_o                                  : std_logic_vector(3 downto 0);
+    signal h_sync_i, v_sync_i, x_o, y_o                   : natural;
 
 begin
 
@@ -46,13 +70,28 @@ begin
     port map(
             clk_i      => clk_i,
             reset_i    => reset_i,
+            pixel_en_i => pixel_en_i,
             swsync_i   => swsync_i,
             pbsync_i   => pbsync_i,
-            rgb_pat1_i => rgb_pat1_i,
-            rgb_pat2_i => rgb_pat2_i,
-            rgb_mem1_i => rgb_mem1_i,
-            rgb_mem2_i => rgb_mem2_i,
-            rgb_o      => rgb_o
+            r_pat1_i   => r_pat1_i,
+            g_pat1_i   => g_pat1_i,
+            b_pat1_i   => b_pat1_i,
+            r_pat2_i   => r_pat2_i,
+            g_pat2_i   => g_pat2_i,
+            b_pat2_i   => b_pat2_i,
+            r_mem1_i   => r_mem1_i,
+            g_mem1_i   => g_mem1_i,
+            b_mem1_i   => b_mem1_i,
+            r_mem2_i   => r_mem2_i,
+            g_mem2_i   => g_mem2_i,
+            b_mem2_i   => b_mem2_i,
+            h_sync_i   => h_sync_i,
+            v_sync_i   => v_sync_i,
+            r_o        => r_o,
+            g_o        => g_o,
+            b_o        => b_o,
+            x_o        => x_o,
+            y_o        => y_o
             );
 
     CLK_p : process                     -- 100 Mhz
@@ -72,23 +111,33 @@ begin
 
     end process;
 
+    Enable_p  :  process
+	begin
+		pixel_en_i <= '1';
+		wait for 0.5 ms;
+		pixel_en_i <= '0';
+		wait for 0.5 ms;
+	end process;
+
     SW_p : process
         begin
-            rgb_pat1_i <= "111100000000";
-            rgb_pat2_i <= "000011110000";
-            rgb_mem1_i <= "000000001111";
-            wait for 15 us;
-
-            swsync_i(0) <= '1';
-            wait for 15 us;
 
             swsync_i(0) <= '0';
             swsync_i(1) <= '0';
-            wait for 15 us;
+            wait for 1 ms;
 
             swsync_i(0) <= '0';
             swsync_i(1) <= '1';
-            wait;
+            wait for 1 ms;
+
+            swsync_i(0) <= '1';
+            swsync_i(1) <= '0';
+            wait for 1 ms;
+
+            swsync_i(0) <= '0';
+            swsync_i(1) <= '0';
+            swsync_i(2) <= '1';       
+            wait for 1 ms;
         
     end process;
 
