@@ -48,9 +48,7 @@ begin
            s_rgb   <= (others => '0');
 
         elsif clk_i'event and clk_i = '1' then
-            if pixel_en_i = '1' then
-                if h_sync_i >= h_front_porch and h_sync_i <= h_visible_area then
-                    
+            if pixel_en_i = '1' then              
                     case h_sync_i is
                         when 0 to 39 | 160 to 199 | 320 to 359 | 480 to 519 =>
                             s_rgb <= red;
@@ -67,10 +65,7 @@ begin
                         when others =>
                             s_rgb <= (others => '0');
 
-                    end case;     
-                else
-                    s_rgb <= (others => '0');  
-                end if;  
+                    end case;       
             end if;
         end if;
     end process p_stripe;
