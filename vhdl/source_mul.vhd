@@ -56,6 +56,7 @@ signal s_states : fsm_states;
 signal s_rgb    : std_logic_vector(11 downto 0);
 signal s_x      : natural;
 signal s_y      : natural;
+signal s_delay  : std_logic;
 
 constant pic_size  : natural := 100;
 
@@ -68,8 +69,9 @@ begin
         if reset_i = '1' then
             s_states <= MEM1;
             s_rgb    <= (others => '0');
-            s_x      <= 100;
-            s_y      <= 100;
+            s_x      <= 320;
+            s_y      <= 240;
+            s_delay  <= '1';
 
         elsif clk_i'event and clk_i = '1' then
             if pixel_en_i = '1' then
@@ -85,42 +87,52 @@ begin
 
                 end if;
 
-                if pbsync_i = "1000" then
-                    if s_x >= 40 then
-                        s_x <=  s_x - 10;
-                    
-                    else
-                        s_x <= 0;
-                    
-                    end if;
+                case( pbsync_i ) is
                 
-                elsif pbsync_i = "0100" then
-                    if s_y >= 40 then
-                        s_y <= s_y - 10;
+                    when "1000" => --Left
+                        if s_delay = '1' then
+                            s_delay <= '0';
+                            if s_x >= 5 then
+                                s_x <=  s_x - 5;          
+                            else
+                                s_x <= 5;
+                            end if;
+                        end if;
 
-                    else
-                        s_y <= 0;
-
-                    end if;
-
-                elsif pbsync_i = "0010" then
-                    if s_x = 540 then
-                        s_x <= s_x;
+                    when "0100" =>  --Up
+                        if s_delay = '1' then
+                            s_delay <= '0';
+                            if s_y >= 5 then
+                                s_y <= s_y - 5;
+                            else
+                                s_y <= 5;
+                            end if;
+                        end if;
+                
+                    when "0010" => -- Right
+                        if s_delay = '1' then
+                            s_delay <= '0';
+                            if s_x <= 530 then
+                                s_x <= s_x + 5;
+                            else
+                                s_x <= 530;
+                            end if;
+                        end if;
                     
-                    else
-                        s_x <= s_x - 10;
+                    when "0001" => -- Down
+                        if s_delay = '1' then
+                            s_delay <= '0';
+                            if s_y <= 370 then
+                                s_y <= s_y + 5;
+                            else
+                                s_y <= 370;
+                            end if;
+                        end if;
 
-                    end if;
-
-                elsif pbsync_i = "0001" then
-                    if s_y = 360 then
-                        s_y <= s_y;
-
-                    else
-                        s_y <= s_y + 10;
-                    
-                    end if;
-                end if;
+                    when others =>
+                        s_delay <= '1';
+                
+                end case ;
                     
                 case s_states is
 
@@ -145,8 +157,8 @@ begin
 
                             end if;
                         else
-                            s_x      <= 100;
-                            s_y      <= 100;
+                            s_x      <= 320;
+                            s_y      <= 240;
                             s_rgb(11 downto 8) <=  r_mem1_i;
                             s_rgb(7 downto 4)  <=  g_mem1_i;
                             s_rgb(3 downto 0)  <=  b_mem1_i;
@@ -174,8 +186,8 @@ begin
                             
                             end if;
                         else
-                            s_x      <= 100;
-                            s_y      <= 100;
+                            s_x      <= 320;
+                            s_y      <= 240;
                             s_rgb(11 downto 8) <=  r_pat1_i;
                             s_rgb(7 downto 4)  <=  g_pat1_i;
                             s_rgb(3 downto 0)  <=  b_pat1_i;
@@ -203,8 +215,8 @@ begin
 
                             end if;
                         else
-                            s_x      <= 100;
-                            s_y      <= 100;
+                            s_x      <= 320;
+                            s_y      <= 240;
                             s_rgb(11 downto 8) <=  r_pat2_i;
                             s_rgb(7 downto 4)  <=  g_pat2_i;
                             s_rgb(3 downto 0)  <=  b_pat2_i;

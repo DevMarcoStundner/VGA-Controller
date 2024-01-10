@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
-| Date         : Wed Jan 10 15:32:41 2024
+| Date         : Wed Jan 10 21:39:07 2024
 | Host         : LAPTOP-Q1LH0V8I running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file vga_top_control_sets_placed.rpt
 | Design       : vga_top
@@ -23,7 +23,7 @@ Table of Contents
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
 | Number of unique control sets                            |     7 |
-| Unused register locations in slices containing registers |    22 |
+| Unused register locations in slices containing registers |    21 |
 +----------------------------------------------------------+-------+
 
 
@@ -33,11 +33,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              41 |           25 |
-| No           | No                    | Yes                    |              38 |           18 |
+| No           | No                    | No                     |              41 |           23 |
+| No           | No                    | Yes                    |              39 |           18 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |              31 |           13 |
-| Yes          | No                    | Yes                    |             172 |           62 |
+| Yes          | No                    | No                     |              31 |           11 |
+| Yes          | No                    | Yes                    |             172 |           63 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -45,16 +45,16 @@ Table of Contents
 3. Detailed Control Set Information
 -----------------------------------
 
-+------------------+------------------------------+------------------+------------------+----------------+
-|   Clock Signal   |         Enable Signal        | Set/Reset Signal | Slice Load Count | Bel Load Count |
-+------------------+------------------------------+------------------+------------------+----------------+
-|  clk_i_IBUF_BUFG | i_vga/s_v_counter[0]_i_1_n_0 | reset_i_IBUF     |                3 |             11 |
-|  clk_i_IBUF_BUFG | i_prescaler/E[0]             |                  |               13 |             31 |
-|  clk_i_IBUF_BUFG | i_source_mul/s_x[30]_i_1_n_0 | reset_i_IBUF     |                7 |             31 |
-|  clk_i_IBUF_BUFG | i_source_mul/s_y[30]_i_1_n_0 | reset_i_IBUF     |               10 |             31 |
-|  clk_i_IBUF_BUFG |                              | reset_i_IBUF     |               18 |             38 |
-|  clk_i_IBUF_BUFG |                              |                  |               25 |             41 |
-|  clk_i_IBUF_BUFG | i_prescaler/s_pixel_en       | reset_i_IBUF     |               42 |             99 |
-+------------------+------------------------------+------------------+------------------+----------------+
++------------------+---------------------------------+------------------+------------------+----------------+
+|   Clock Signal   |          Enable Signal          | Set/Reset Signal | Slice Load Count | Bel Load Count |
++------------------+---------------------------------+------------------+------------------+----------------+
+|  clk_i_IBUF_BUFG | i_prescaler/s_v_counter         | reset_i_IBUF     |                3 |             11 |
+|  clk_i_IBUF_BUFG | i_prescaler/E[0]                | reset_i_IBUF     |                9 |             31 |
+|  clk_i_IBUF_BUFG | i_prescaler/rom_addr_reg[13][0] |                  |               11 |             31 |
+|  clk_i_IBUF_BUFG | i_prescaler/s_x_reg[30][0]      | reset_i_IBUF     |               10 |             31 |
+|  clk_i_IBUF_BUFG |                                 | reset_i_IBUF     |               18 |             39 |
+|  clk_i_IBUF_BUFG |                                 |                  |               23 |             41 |
+|  clk_i_IBUF_BUFG | i_prescaler/s_pixel_en          | reset_i_IBUF     |               41 |             99 |
++------------------+---------------------------------+------------------+------------------+----------------+
 
 

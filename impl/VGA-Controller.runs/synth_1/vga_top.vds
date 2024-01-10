@@ -2,8 +2,8 @@
 # Vivado v2016.1 (64-bit)
 # SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
 # IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
-# Start of session at: Wed Jan 10 15:30:24 2024
-# Process ID: 19108
+# Start of session at: Wed Jan 10 21:37:43 2024
+# Process ID: 19340
 # Current directory: C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1
 # Command line: vivado.exe -log vga_top.vds -mode batch -messageDb vivado.pb -notrace -source vga_top.tcl
 # Log file: C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/vga_top.vds
@@ -21,9 +21,9 @@ Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 14096 
+INFO: Helper process launched with PID 8112 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 281.324 ; gain = 75.188
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:13 . Memory (MB): peak = 281.496 ; gain = 74.695
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'vga_top' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:32]
 INFO: [Synth 8-3491] module 'vga' declared at 'C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_control.vhd:20' bound to instance 'i_vga' of component 'vga' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:217]
@@ -50,10 +50,10 @@ INFO: [Synth 8-256] done synthesizing module 'mem_control1' (7#1) [C:/Users/marc
 INFO: [Synth 8-3491] module 'mem_control2' declared at 'C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/memory_control2.vhd:20' bound to instance 'i_mem_control2' of component 'mem_control2' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:317]
 INFO: [Synth 8-638] synthesizing module 'mem_control2' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/memory_control2.vhd:38]
 INFO: [Synth 8-256] done synthesizing module 'mem_control2' (8#1) [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/memory_control2.vhd:38]
-INFO: [Synth 8-3491] module 'memory_pic' declared at 'C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19108-LAPTOP-Q1LH0V8I/realtime/memory_pic_stub.vhdl:5' bound to instance 'i_memory_pic' of component 'memory_pic' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:333]
-INFO: [Synth 8-638] synthesizing module 'memory_pic' [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19108-LAPTOP-Q1LH0V8I/realtime/memory_pic_stub.vhdl:14]
-INFO: [Synth 8-3491] module 'memory_obj' declared at 'C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19108-LAPTOP-Q1LH0V8I/realtime/memory_obj_stub.vhdl:5' bound to instance 'i_memory_obj' of component 'memory_obj' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:340]
-INFO: [Synth 8-638] synthesizing module 'memory_obj' [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19108-LAPTOP-Q1LH0V8I/realtime/memory_obj_stub.vhdl:14]
+INFO: [Synth 8-3491] module 'memory_pic' declared at 'C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19340-LAPTOP-Q1LH0V8I/realtime/memory_pic_stub.vhdl:5' bound to instance 'i_memory_pic' of component 'memory_pic' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:333]
+INFO: [Synth 8-638] synthesizing module 'memory_pic' [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19340-LAPTOP-Q1LH0V8I/realtime/memory_pic_stub.vhdl:14]
+INFO: [Synth 8-3491] module 'memory_obj' declared at 'C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19340-LAPTOP-Q1LH0V8I/realtime/memory_obj_stub.vhdl:5' bound to instance 'i_memory_obj' of component 'memory_obj' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:340]
+INFO: [Synth 8-638] synthesizing module 'memory_obj' [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19340-LAPTOP-Q1LH0V8I/realtime/memory_obj_stub.vhdl:14]
 INFO: [Synth 8-256] done synthesizing module 'vga_top' (9#1) [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:32]
 WARNING: [Synth 8-3331] design source_mul has unconnected port swsync_i[15]
 WARNING: [Synth 8-3331] design source_mul has unconnected port swsync_i[14]
@@ -69,7 +69,7 @@ WARNING: [Synth 8-3331] design source_mul has unconnected port swsync_i[5]
 WARNING: [Synth 8-3331] design source_mul has unconnected port swsync_i[4]
 WARNING: [Synth 8-3331] design source_mul has unconnected port swsync_i[3]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 319.637 ; gain = 113.500
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:15 . Memory (MB): peak = 318.914 ; gain = 112.113
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -79,7 +79,7 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 319.637 ; gain = 113.500
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:15 . Memory (MB): peak = 318.914 ; gain = 112.113
 ---------------------------------------------------------------------------------
 WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'memory_obj' instantiated as 'i_memory_obj' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:340]
 WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'memory_pic' instantiated as 'i_memory_pic' [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/vga_top.vhd:333]
@@ -88,10 +88,10 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19108-LAPTOP-Q1LH0V8I/dcp/memory_obj_in_context.xdc] for cell 'i_memory_obj'
-Finished Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19108-LAPTOP-Q1LH0V8I/dcp/memory_obj_in_context.xdc] for cell 'i_memory_obj'
-Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19108-LAPTOP-Q1LH0V8I/dcp_2/memory_pic_in_context.xdc] for cell 'i_memory_pic'
-Finished Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19108-LAPTOP-Q1LH0V8I/dcp_2/memory_pic_in_context.xdc] for cell 'i_memory_pic'
+Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19340-LAPTOP-Q1LH0V8I/dcp/memory_obj_in_context.xdc] for cell 'i_memory_obj'
+Finished Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19340-LAPTOP-Q1LH0V8I/dcp/memory_obj_in_context.xdc] for cell 'i_memory_obj'
+Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19340-LAPTOP-Q1LH0V8I/dcp_2/memory_pic_in_context.xdc] for cell 'i_memory_pic'
+Finished Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.runs/synth_1/.Xil/Vivado-19340-LAPTOP-Q1LH0V8I/dcp_2/memory_pic_in_context.xdc] for cell 'i_memory_pic'
 Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.srcs/constrs_1/new/vga_controll_constrs.xdc]
 Finished Parsing XDC File [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.srcs/constrs_1/new/vga_controll_constrs.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/marco/Documents/GitHub/VGA-Controller/impl/VGA-Controller.srcs/constrs_1/new/vga_controll_constrs.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/vga_top_propImpl.xdc].
@@ -103,18 +103,18 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 614.578 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 614.668 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'i_memory_obj' at clock pin 'clka' is different from the actual clock period '10.000', this can result in different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'i_memory_pic' at clock pin 'clka' is different from the actual clock period '10.000', this can result in different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:33 . Memory (MB): peak = 614.578 ; gain = 408.441
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:31 . Memory (MB): peak = 614.668 ; gain = 407.867
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:33 . Memory (MB): peak = 614.578 ; gain = 408.441
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:31 . Memory (MB): peak = 614.668 ; gain = 407.867
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -122,16 +122,15 @@ Start Applying 'set_property' XDC Constraints
 Applied set_property DONT_TOUCH = true for i_memory_obj. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for i_memory_pic. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:33 . Memory (MB): peak = 614.578 ; gain = 408.441
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:31 . Memory (MB): peak = 614.668 ; gain = 407.867
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:130]
-INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:129]
-INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:130]
-INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:129]
-INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:130]
-INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:129]
-INFO: [Synth 8-5545] ROM "s_x" won't be mapped to RAM because address size (31) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "s_y" won't be mapped to RAM because address size (31) is larger than maximum supported(25)
+INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:142]
+INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:141]
+INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:142]
+INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:141]
+INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:142]
+INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/source_mul.vhd:141]
+INFO: [Synth 8-5544] ROM "s_delay" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5545] ROM "s_25mhzen" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "s_enctr_25" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "s_1khzen" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -147,7 +146,7 @@ INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to lo
 INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/memory_control2.vhd:60]
 INFO: [Synth 8-41] '_-' operator could not be merged with '+' operator due to loss of accuracy [C:/Users/marco/Documents/GitHub/VGA-Controller/vhdl/memory_control2.vhd:62]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:35 . Memory (MB): peak = 614.578 ; gain = 408.441
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:33 . Memory (MB): peak = 614.668 ; gain = 407.867
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -162,7 +161,7 @@ Detailed RTL Component Info :
 +---Adders : 
 	   3 Input     32 Bit       Adders := 4     
 	   2 Input     32 Bit       Adders := 2     
-	   2 Input     31 Bit       Adders := 7     
+	   2 Input     31 Bit       Adders := 8     
 	   2 Input     17 Bit       Adders := 2     
 	   2 Input     14 Bit       Adders := 1     
 +---Registers : 
@@ -173,10 +172,11 @@ Detailed RTL Component Info :
 	               12 Bit    Registers := 6     
 	                4 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 4     
+	                1 Bit    Registers := 5     
 +---Muxes : 
 	   2 Input     32 Bit        Muxes := 2     
 	   2 Input     31 Bit        Muxes := 6     
+	   5 Input     31 Bit        Muxes := 2     
 	   2 Input     17 Bit        Muxes := 12    
 	   2 Input     14 Bit        Muxes := 5     
 	   2 Input     12 Bit        Muxes := 12    
@@ -185,9 +185,8 @@ Detailed RTL Component Info :
 	   3 Input      2 Bit        Muxes := 1     
 	   5 Input      2 Bit        Muxes := 1     
 	   4 Input      2 Bit        Muxes := 1     
-	   7 Input      1 Bit        Muxes := 1     
-	   6 Input      1 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 6     
+	   5 Input      1 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 8     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -206,19 +205,20 @@ Module source_mul
 Detailed RTL Component Info : 
 +---Adders : 
 	   3 Input     32 Bit       Adders := 2     
-	   2 Input     31 Bit       Adders := 5     
+	   2 Input     31 Bit       Adders := 6     
 +---Registers : 
 	               31 Bit    Registers := 2     
 	               12 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input     31 Bit        Muxes := 6     
+	   5 Input     31 Bit        Muxes := 2     
 	   4 Input     12 Bit        Muxes := 1     
 	   2 Input     12 Bit        Muxes := 9     
 	   3 Input      2 Bit        Muxes := 1     
-	   7 Input      1 Bit        Muxes := 1     
-	   6 Input      1 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 2     
+	   5 Input      1 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 4     
 Module prescaler 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -283,7 +283,7 @@ BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:19 ; elapsed = 00:00:35 . Memory (MB): peak = 614.578 ; gain = 408.441
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:20 ; elapsed = 00:00:33 . Memory (MB): peak = 614.668 ; gain = 407.867
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
@@ -317,9 +317,9 @@ WARNING: [Synth 8-3331] design source_mul has unconnected port swsync_i[5]
 WARNING: [Synth 8-3331] design source_mul has unconnected port swsync_i[4]
 WARNING: [Synth 8-3331] design source_mul has unconnected port swsync_i[3]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:37 . Memory (MB): peak = 614.578 ; gain = 408.441
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:34 . Memory (MB): peak = 614.668 ; gain = 407.867
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:20 ; elapsed = 00:00:37 . Memory (MB): peak = 614.578 ; gain = 408.441
+Finished Parallel Reinference  : Time (s): cpu = 00:00:20 ; elapsed = 00:00:34 . Memory (MB): peak = 614.668 ; gain = 407.867
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -383,46 +383,46 @@ WARNING: [Synth 8-3332] Sequential element (i_pattern_gen2/s_rgb_reg[4]) is unus
 WARNING: [Synth 8-3332] Sequential element (i_pattern_gen2/s_rgb_reg[2]) is unused and will be removed from module vga_top.
 WARNING: [Synth 8-3332] Sequential element (i_pattern_gen2/s_rgb_reg[1]) is unused and will be removed from module vga_top.
 WARNING: [Synth 8-3332] Sequential element (i_pattern_gen2/s_rgb_reg[0]) is unused and will be removed from module vga_top.
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[27]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[26]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[14]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[13]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[24]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[30]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[15]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[19]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[18]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[17]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[16]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[28]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[25]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[29]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[20]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[23]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[22]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[12]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_v_counter_reg[11]' (FDCE) to 'i_1/i_vga/s_v_counter_reg[21]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_1/\i_vga/s_v_counter_reg[21] )
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[12]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[11]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[11]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[13]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[14]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[13]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[13]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[15]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[23]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[15]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[15]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[16]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[21]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[16]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[16]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[17]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[20]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[17]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[17]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[18]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[18]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[19]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[19]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[22]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[22]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[24]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[27]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[24]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[28]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[24]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[29]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[24]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[30]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[24]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[26]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[24]'
-INFO: [Synth 8-3886] merging instance 'i_1/i_vga/s_h_counter_reg[25]' (FDCE) to 'i_1/i_vga/s_h_counter_reg[24]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_1/\i_vga/s_h_counter_reg[24] )
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[27]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[26]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[14]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[13]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[24]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[30]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[15]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[19]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[18]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[17]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[16]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[28]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[25]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[29]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[20]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[23]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[22]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[12]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[11]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_v_counter_reg[11]' (FDCE) to 'i_2/i_vga/s_v_counter_reg[21]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/\i_vga/s_v_counter_reg[21] )
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[29]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[30]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[27]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[30]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[28]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[30]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[26]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[30]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[24]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[30]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[25]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[30]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[30]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[23]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[23]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[22]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[22]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[21]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[20]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[21]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[21]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[19]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[12]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[19]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[11]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[19]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[18]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[19]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[19]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[17]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[14]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[17]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[13]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[17]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[15]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[17]'
+INFO: [Synth 8-3886] merging instance 'i_2/i_vga/s_h_counter_reg[17]' (FDCE) to 'i_2/i_vga/s_h_counter_reg[16]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_2/\i_vga/s_h_counter_reg[16] )
 WARNING: [Synth 8-3332] Sequential element (i_vga/s_h_counter_reg[11]) is unused and will be removed from module vga_top.
 WARNING: [Synth 8-3332] Sequential element (i_vga/s_h_counter_reg[12]) is unused and will be removed from module vga_top.
 WARNING: [Synth 8-3332] Sequential element (i_vga/s_h_counter_reg[13]) is unused and will be removed from module vga_top.
@@ -464,9 +464,9 @@ WARNING: [Synth 8-3332] Sequential element (i_vga/s_v_counter_reg[28]) is unused
 WARNING: [Synth 8-3332] Sequential element (i_vga/s_v_counter_reg[29]) is unused and will be removed from module vga_top.
 WARNING: [Synth 8-3332] Sequential element (i_vga/s_v_counter_reg[30]) is unused and will be removed from module vga_top.
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:40 . Memory (MB): peak = 614.578 ; gain = 408.441
+Finished Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:38 . Memory (MB): peak = 614.668 ; gain = 407.867
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:23 ; elapsed = 00:00:40 . Memory (MB): peak = 614.578 ; gain = 408.441
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:22 ; elapsed = 00:00:38 . Memory (MB): peak = 614.668 ; gain = 407.867
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -480,10 +480,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:01:02 . Memory (MB): peak = 632.957 ; gain = 426.820
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:33 ; elapsed = 00:00:49 . Memory (MB): peak = 633.926 ; gain = 427.125
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:01:05 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:51 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -495,16 +495,16 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:51 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
-Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:00:34 ; elapsed = 00:00:51 . Memory (MB): peak = 684.621 ; gain = 477.820
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:41 ; elapsed = 00:01:06 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:34 ; elapsed = 00:00:51 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
 Start IO Insertion
 ---------------------------------------------------------------------------------
@@ -521,7 +521,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:01:07 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -534,7 +534,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:01:07 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -546,25 +546,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:42 ; elapsed = 00:01:07 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:42 ; elapsed = 00:01:07 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:01:07 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:42 ; elapsed = 00:01:07 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -585,16 +585,16 @@ Report Cell Usage:
 |1     |memory_obj_bbox |     1|
 |2     |memory_pic_bbox |     1|
 |3     |BUFG            |     1|
-|4     |CARRY4          |   133|
+|4     |CARRY4          |   141|
 |5     |DSP48E1         |     4|
-|6     |LUT1            |   345|
-|7     |LUT2            |   112|
-|8     |LUT3            |    50|
-|9     |LUT4            |   112|
-|10    |LUT5            |   140|
-|11    |LUT6            |    45|
+|6     |LUT1            |   373|
+|7     |LUT2            |   115|
+|8     |LUT3            |    52|
+|9     |LUT4            |   105|
+|10    |LUT5            |   104|
+|11    |LUT6            |    90|
 |12    |FDCE            |   204|
-|13    |FDPE            |     6|
+|13    |FDPE            |     7|
 |14    |FDRE            |    31|
 |15    |IBUF            |     9|
 |16    |OBUF            |    14|
@@ -604,24 +604,24 @@ Report Instance Areas:
 +------+-----------------+-------------+------+
 |      |Instance         |Module       |Cells |
 +------+-----------------+-------------+------+
-|1     |top              |             |  1230|
+|1     |top              |             |  1274|
 |2     |  i_pattern_gen2 |pattern_gen2 |     3|
-|3     |  i_io_logic     |io_logic     |    40|
+|3     |  i_io_logic     |io_logic     |    31|
 |4     |  i_mem_control1 |mem_control1 |    89|
 |5     |  i_mem_control2 |mem_control2 |   137|
 |6     |  i_pattern_gen1 |pattern_gen1 |    15|
-|7     |  i_prescaler    |prescaler    |   116|
-|8     |  i_source_mul   |source_mul   |   573|
-|9     |  i_vga          |vga          |   209|
+|7     |  i_prescaler    |prescaler    |   119|
+|8     |  i_source_mul   |source_mul   |   616|
+|9     |  i_vga          |vga          |   216|
 +------+-----------------+-------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:42 ; elapsed = 00:01:07 . Memory (MB): peak = 685.703 ; gain = 479.566
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 684.621 ; gain = 477.820
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 71 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:50 . Memory (MB): peak = 685.703 ; gain = 179.223
-Synthesis Optimization Complete : Time (s): cpu = 00:00:42 ; elapsed = 00:01:08 . Memory (MB): peak = 685.703 ; gain = 479.566
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:36 . Memory (MB): peak = 684.621 ; gain = 177.367
+Synthesis Optimization Complete : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 684.621 ; gain = 477.820
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 146 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 154 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -629,8 +629,8 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-128 Infos, 88 Warnings, 0 Critical Warnings and 0 Errors encountered.
+127 Infos, 88 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:01:03 . Memory (MB): peak = 685.703 ; gain = 479.566
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 685.703 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Wed Jan 10 15:31:36 2024...
+synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:47 . Memory (MB): peak = 684.621 ; gain = 477.820
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 684.621 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Jan 10 21:38:37 2024...
